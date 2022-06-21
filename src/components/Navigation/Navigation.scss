@@ -1,1 +1,140 @@
+@mixin navButtonColor {
+  color: #fffef2;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+@mixin wesopLogoFont {
+  font-family: 'LeferiPoint-SpecialA';
+}
+@mixin wideModalListsInterval {
+  height: 21px;
+  margin-bottom: 12px;
+}
+@mixin modalListsDefault {
+  flex: 1.6666;
+  width: calc(50% + 3vw);
+  padding-right: 3vw;
+  font-size: 14px;
+}
+.navBox {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 0px 40px;
+  background-color: #333333;
 
+  .navPrimaryMenu {
+    display: flex;
+    align-items: center;
+    .navPrimaryMenuItem {
+      display: flex;
+      align-items: center;
+      margin-right: 14px;
+      height: 80px;
+      font-size: 14px;
+      .wesopLogo {
+        @include navButtonColor;
+        font-size: 30px;
+        @include wesopLogoFont;
+        text-decoration: none;
+      }
+      .navMenuLink {
+        padding: 4px;
+        @include navButtonColor;
+        font-size: 14px;
+        text-decoration: none;
+        .navIcon {
+          font-size: 14px;
+        }
+      }
+      .navClosingButton {
+        @include navButtonColor;
+        display: none;
+        .navIcon {
+          margin-left: 7px;
+          font-size: 12px;
+        }
+      }
+    }
+  }
+  .navSecondMenu {
+    display: flex;
+    .navSecondMenuItem {
+      margin-right: 14px;
+      .loginButton {
+        @include navButtonColor;
+      }
+      .cartButton {
+        @include navButtonColor;
+      }
+    }
+  }
+}
+.navWideModalBox {
+  display: flex;
+  width: 100%;
+
+  .wesopLogoWrap {
+    flex: 1.6666;
+    margin-top: 90px;
+    .wesopLogoInWideModal {
+      width: 120px;
+      margin-left: 40px;
+      font-size: 40px;
+      @include wesopLogoFont;
+    }
+  }
+  .navModalListWarp {
+    display: flex;
+    flex: 4.9998;
+    margin-top: 90px;
+    margin-bottom: 40px;
+    .modalListLeft {
+      @include modalListsDefault();
+      .categories {
+        margin-bottom: 45px;
+        .categoryTitle {
+          @include wideModalListsInterval;
+        }
+        .categoryInList {
+          @include wideModalListsInterval;
+        }
+      }
+    }
+    .modalListCenter {
+      @include modalListsDefault();
+      .categories {
+        margin-bottom: 45px;
+        .categoryTitle {
+          @include wideModalListsInterval;
+        }
+        .categoryInList {
+          @include wideModalListsInterval;
+        }
+      }
+    }
+    .modalListRight {
+      @include modalListsDefault();
+      .categories {
+        margin-bottom: 45px;
+        .categoryTitle {
+          @include wideModalListsInterval;
+        }
+        .categoryInList {
+          @include wideModalListsInterval;
+        }
+      }
+    }
+  }
+
+  .navModalImage {
+    flex: 3.3332;
+    height: calc(100vh - 80px);
+    .handHoldingMirror {
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
