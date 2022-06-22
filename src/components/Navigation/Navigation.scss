@@ -1,5 +1,4 @@
 @mixin navButtonColor {
-  color: #fffef2;
   border: none;
   background: transparent;
   cursor: pointer;
@@ -35,6 +34,7 @@
       height: 80px;
       font-size: 14px;
       .wesopLogo {
+        color: #fffef2;
         @include navButtonColor;
         font-size: 30px;
         @include wesopLogoFont;
@@ -42,6 +42,7 @@
       }
       .navMenuLink {
         padding: 4px;
+        color: #fffef2;
         @include navButtonColor;
         font-size: 14px;
         text-decoration: none;
@@ -50,8 +51,8 @@
         }
       }
       .navClosingButton {
+        color: #fffef2;
         @include navButtonColor;
-        display: none;
         .navIcon {
           margin-left: 7px;
           font-size: 12px;
@@ -64,9 +65,11 @@
     .navSecondMenuItem {
       margin-right: 14px;
       .loginButton {
+        color: #fffef2;
         @include navButtonColor;
       }
       .cartButton {
+        color: #fffef2;
         @include navButtonColor;
       }
     }
