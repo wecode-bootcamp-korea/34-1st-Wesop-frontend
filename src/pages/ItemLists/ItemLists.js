@@ -1,6 +1,6 @@
 import React from 'react';
-import './ItemLists.scss';
 import { ITEM_TYPES } from './ItemListsData';
+import './ItemLists.scss';
 
 const ItemLists = props => {
   return (
