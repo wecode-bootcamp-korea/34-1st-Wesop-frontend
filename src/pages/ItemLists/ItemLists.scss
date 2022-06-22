@@ -1,0 +1,160 @@
+.itemLists {
+  display: flex;
+  flex-direction: column;
+
+  .main {
+    padding-top: 65px;
+
+    .wrapperTitle {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 130px;
+      margin-top: 30px;
+      margin-bottom: 20px;
+      padding: 0 20px 0 34px;
+
+      .logo {
+        font-family: 'LeferiPoint-SpecialA';
+        font-size: 40px;
+      }
+
+      .itemType {
+        font-size: 25px;
+      }
+    }
+    .wrapperItemTypes {
+      display: flex;
+      align-items: center;
+      white-space: nowrap;
+      height: 110px;
+      background-color: #ebeade;
+      overflow-x: scroll;
+
+      .itemType {
+        padding: 0 10px;
+        color: #686867;
+        font-size: 14px;
+
+        &:first-child {
+          padding-left: 40px;
+          padding-right: 20px;
+          border-right: 1px solid #686867;
+        }
+
+        .itemTypeText {
+          position: relative;
+          display: block;
+
+          &:after {
+            display: block;
+            position: absolute;
+            width: 0;
+            height: 1px;
+            left: 0;
+            bottom: 0px;
+            background: #686867;
+            transition: width 0.2s;
+            content: '';
+          }
+
+          &:hover:after {
+            width: 100%;
+            transition: width 0.2s;
+          }
+        }
+      }
+    }
+
+    .wrapperItems {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+
+      .itemDescription {
+        padding: 100px 50px;
+        height: 900px;
+        transition: background-color 0.3s;
+
+        .title {
+          margin-bottom: 50px;
+          font-size: 28px;
+        }
+
+        .description {
+          line-height: 25px;
+          font-size: 15px;
+        }
+      }
+
+      .item {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: 900px;
+        padding-top: 50px;
+        transition: background-color 0.3s;
+
+        &:hover {
+          background-color: #f0efe0;
+
+          .addCart {
+            opacity: 1;
+          }
+        }
+
+        .image {
+          height: 450px;
+          margin-top: 40px;
+        }
+
+        .name {
+          margin-bottom: 20px;
+          color: #262626;
+        }
+
+        .model {
+          margin-bottom: 40px;
+          color: #676767;
+        }
+
+        .wrapperSubText {
+          width: 80%;
+          border-top: 2px solid black;
+
+          .subText {
+            padding: 30px 0;
+            border-bottom: 1px solid #cfcec4;
+
+            .title {
+              margin-right: 15px;
+            }
+
+            .discription {
+              color: #676767;
+            }
+          }
+        }
+
+        .addCart {
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width: 100%;
+          height: 60px;
+          color: white;
+          background-color: #343434;
+          border: none;
+          opacity: 0;
+          font-size: 14px;
+          cursor: pointer;
+          transition: all 0.3s;
+
+          &:hover {
+            background-color: #010101;
+          }
+        }
+      }
+    }
+  }
+}
