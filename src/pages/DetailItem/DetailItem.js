@@ -20,7 +20,7 @@ const DetailItem = () => {
     const { name } = e.target;
     ITEM_DATA.map(item => {
       if (item.name === name) {
-        setSelectedItem(item);
+        return setSelectedItem(item);
       }
     });
   };
@@ -116,11 +116,13 @@ const DetailItem = () => {
           src="./images/leftArrow.png"
           className="leftArrow"
           onClick={moveLeft}
+          alt="화살표 아이콘"
         />
         <img
           src="./images/rightArrow.png"
           className="rightArrow"
           onClick={moveRight}
+          alt="화살표 아이콘"
         />
         <div className="carouselWrapper">
           <div
@@ -165,7 +167,7 @@ const Categories = ({ title, element }) => {
 const SlideModule = ({ img, name, description }) => {
   return (
     <div className="imgBox">
-      <img src={img} className="image" />
+      <img src={img} className="image" alt="제품 사진" />
       <div className="text">
         <p className="recommendedItemName">{name}</p>
         <p>{description}</p>
