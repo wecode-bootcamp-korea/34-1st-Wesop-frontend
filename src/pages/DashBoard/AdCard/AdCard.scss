@@ -29,18 +29,19 @@ aside.adCard {
 
     p {
       font-size: 16px;
+      margin-bottom: 30px;
     }
 
-    .plusButton {
-      width: 489.99px;
-      height: 80px;
-      margin-top: 30px;
+    // .plusButton {
+    //   width: 489.99px;
+    //   height: 80px;
+    //   margin-top: 30px;
 
-      a {
-        width: 300px;
-        height: 60px;
-        padding: 19px 55px 19px 23px;
-      }
+    a {
+      width: 300px;
+      height: 60px;
+      padding: 19px 55px 19px 23px;
     }
+    // }
   }
 }

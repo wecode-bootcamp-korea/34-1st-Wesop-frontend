@@ -1,6 +1,8 @@
 import React from 'react';
 import './AdCard.scss';
 
+import UseALink from '../UseALink/UseALink';
+
 const AdCard = ({ topTitle, title, description, plusInfo }) => {
   return (
     <aside className="adCard">
@@ -10,9 +12,7 @@ const AdCard = ({ topTitle, title, description, plusInfo }) => {
           <h2 className="adCardH2">{title}</h2>
         </header>
         <p>{description}</p>
-        <div className="plusButton">
-          <a>{plusInfo}</a>
-        </div>
+        <UseALink text={plusInfo} />
       </article>
     </aside>
   );

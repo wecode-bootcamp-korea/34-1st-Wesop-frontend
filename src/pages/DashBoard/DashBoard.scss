@@ -1,3 +1,4 @@
+@import '../../styles/common.scss';
 @mixin dashBoardFonts($font-size, $margin) {
   color: #fffef2;
   font-size: $font-size;
@@ -5,7 +6,9 @@
 }
 
 @mixin moduleSize($height) {
-  width: 1905px;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
   height: $height;
   padding-top: 150px;
 }
@@ -26,6 +29,7 @@
 
       background-position: 50% 50%;
       background-image: url(../../../public/images/christin-hume-0MoF-Fe0w0A-unsplash.jpg);
+
       background-size: cover;
       background-repeat: no-repeat;
 
@@ -47,10 +51,10 @@
         p {
           @include dashBoardFonts(16px, 0px 0px 30px);
         }
-
-        a {
-          @include dashBoardFonts(14px, 0px -0.5px 20px);
-          padding: 19px 55px 19px 23px;
+        .goToPerfume {
+          a {
+            // @include dashBoardFonts(14px, 0px -0.5px 20px);
+          }
         }
       }
     }
@@ -64,24 +68,22 @@
 
     .historyWrapper {
       @include moduleSize(805.08px);
-      display: flex;
       background-color: green;
     }
 
     .travelWrapper {
       @include moduleSize(780.08px);
-      display: flex;
       flex-direction: row-reverse;
       background-color: orange;
-      justify-content: flex-end;
 
       img {
         width: 999.25px;
         height: 562.08px;
       }
     }
+
     .goodChoice {
-      width: 1713px;
+      width: 100%;
       height: 249.9px;
       padding-top: 150px;
 
@@ -92,22 +94,39 @@
     }
 
     .goodChoiceWrapper {
-      width: 1713px;
-      height: 602.3px;
+      @include moduleSize(602.3px);
       padding-top: 50px;
       background-color: pink;
     }
 
     .closeStore {
-      display: flex;
-
-      width: 1713px;
-      height: 689.34px;
+      @include moduleSize(689.34px);
+      // display: flex;
+      // width: 1905px;
+      // height: 689.34px;
       padding-top: 150px;
 
       img {
         width: 999px;
         height: 561.94px;
+      }
+    }
+    .bottomQuote {
+      display: flex;
+
+      width: 100%;
+      height: 387.9px;
+      padding: 150px 40px;
+      flex-direction: column;
+      align-items: center;
+
+      .quote {
+        margin-bottom: 20px;
+        font-size: 30px;
+      }
+
+      .cite {
+        font-size: 14px;
       }
     }
   }
