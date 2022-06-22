@@ -3,78 +3,128 @@
   background: transparent;
   cursor: pointer;
 }
+
 @mixin wesopLogoFont {
   font-family: 'LeferiPoint-SpecialA';
 }
+
 @mixin wideModalListsInterval {
   height: 21px;
   margin-bottom: 12px;
 }
+
 @mixin modalListsDefault {
   flex: 1.6666;
   width: calc(50% + 3vw);
   padding-right: 3vw;
   font-size: 14px;
 }
+
 .navBox {
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
   padding: 0px 40px;
-  background-color: #333333;
+  background-color: #333;
+  //부모 선택자 참조 "&"(스타일 덮어쓰기 할때 유용)
+  &.white {
+    background-color: #fffef2;
+    border-bottom: 1px solid #eaeae8;
+  }
 
   .navPrimaryMenu {
     display: flex;
+    position: relative;
     align-items: center;
+
     .navPrimaryMenuItem {
       display: flex;
       align-items: center;
       margin-right: 14px;
       height: 80px;
       font-size: 14px;
+
       .wesopLogo {
         color: #fffef2;
         @include navButtonColor;
         font-size: 30px;
         @include wesopLogoFont;
         text-decoration: none;
+        &.white {
+          color: #333;
+        }
       }
+
       .navMenuLink {
         padding: 4px;
         color: #fffef2;
         @include navButtonColor;
         font-size: 14px;
         text-decoration: none;
+        &.white {
+          color: #333;
+        }
+
         .navIcon {
           font-size: 14px;
         }
       }
+
       .navClosingButton {
         color: #fffef2;
+        font-size: 14px;
         @include navButtonColor;
+        &.white {
+          color: #333;
+        }
+
         .navIcon {
           margin-left: 7px;
-          font-size: 12px;
+          font-size: 14px;
+        }
+      }
+    }
+
+    .navPrimaryMenuItem.highlight {
+      border-bottom: 2px solid #333;
+    }
+  }
+
+  .navSecondMenu {
+    display: flex;
+
+    .navSecondMenuItem {
+      display: flex;
+      align-items: center;
+      height: 80px;
+      &:first-child {
+        margin-right: 14px;
+      }
+
+      .loginButton {
+        padding: 4px;
+        color: #fffef2;
+        font-size: 14px;
+        @include navButtonColor;
+        &.white {
+          color: #333;
+        }
+      }
+
+      .cartButton {
+        padding: 4px;
+        color: #fffef2;
+        font-size: 14px;
+        @include navButtonColor;
+        &.white {
+          color: #333;
         }
       }
     }
   }
-  .navSecondMenu {
-    display: flex;
-    .navSecondMenuItem {
-      margin-right: 14px;
-      .loginButton {
-        color: #fffef2;
-        @include navButtonColor;
-      }
-      .cartButton {
-        color: #fffef2;
-        @include navButtonColor;
-      }
-    }
-  }
 }
+
 .navWideModalBox {
   display: flex;
   width: 100%;

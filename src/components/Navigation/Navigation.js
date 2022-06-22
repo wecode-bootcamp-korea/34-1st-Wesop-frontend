@@ -8,21 +8,14 @@ import NavigationModal from './NavigationModal';
 const Navigation = props => {
   const [mockNavMenu, setMockNavMenu] = useState([]);
   const [navClosingBtn, setNavClosingBtn] = useState(false);
-  const [navModalBackGroundColor, setNavModalBackGroundColor] =
-    useState('#333333');
-  const [navBorder, setNavBorder] = useState('');
-  const [navMenuHighlight, setNavMenuHighlight] = useState('');
-  const [navFontColor, setNavFontColor] = useState('#fffef2');
+  const [selectedMenu, setSelectedMenu] = useState(0);
 
   const modalChange = modal => {
-    setNavModalBackGroundColor('#fffef2');
-    setNavFontColor('#333333');
     setNavClosingBtn(modal);
   };
 
   const modalReturnToOrigin = modal => {
-    setNavModalBackGroundColor('#333333');
-    setNavFontColor('#fffef2');
+    setSelectedMenu(0);
     setNavClosingBtn(modal);
   };
 
@@ -41,25 +34,30 @@ const Navigation = props => {
 
   return (
     <>
-      <nav
-        className="navBox"
-        style={{ backgroundColor: navModalBackGroundColor }}
-      >
+      <nav className={`navBox ${selectedMenu !== 0 && 'white'}`}>
         <ul className="navPrimaryMenu">
           <li className="navPrimaryMenuItem">
-            <Link to="/" className="wesopLogo" style={{ color: navFontColor }}>
+            <Link
+              to="/"
+              className={`wesopLogo ${selectedMenu !== 0 && 'white'}`}
+            >
               Wēsop
             </Link>
           </li>
           {mockNavMenu.map(menu => {
             return (
-              <li className="navPrimaryMenuItem" key={menu.id}>
+              <li
+                className={`navPrimaryMenuItem ${
+                  selectedMenu === menu.id && 'highlight'
+                }`}
+                key={menu.id}
+              >
                 <button
-                  className="navMenuLink"
+                  className={`navMenuLink ${selectedMenu !== 0 && 'white'}`}
                   onClick={() => {
+                    setSelectedMenu(menu.id);
                     modalChange(true);
                   }}
-                  style={{ color: navFontColor }}
                 >
                   {menu.label}
                 </button>
@@ -69,8 +67,7 @@ const Navigation = props => {
           <li className="navPrimaryMenuItem">
             <Link
               to="/"
-              className="navMenuLink"
-              style={{ color: navFontColor }}
+              className={`navMenuLink ${selectedMenu !== 0 && 'white'}`}
             >
               스토리
             </Link>
@@ -78,8 +75,7 @@ const Navigation = props => {
           <li className="navPrimaryMenuItem">
             <Link
               to="/"
-              className="navMenuLink"
-              style={{ color: navFontColor }}
+              className={`navMenuLink ${selectedMenu !== 0 && 'white'}`}
             >
               <FontAwesomeIcon icon={faMagnifyingGlass} className="navIcon" />
             </Link>
@@ -88,8 +84,7 @@ const Navigation = props => {
           {navClosingBtn && (
             <li className="navPrimaryMenuItem">
               <button
-                className="navClosingButton"
-                style={{ color: navFontColor }}
+                className={`navClosingButton ${selectedMenu !== 0 && 'white'}`}
                 onClick={navClosingButtonControl}
               >
                 <span>닫기</span>
@@ -100,12 +95,12 @@ const Navigation = props => {
         </ul>
         <ul className="navSecondMenu">
           <li className="navSecondMenuItem">
-            <button className="loginButton" style={{ color: navFontColor }}>
+            <button className={`loginButton ${selectedMenu !== 0 && 'white'}`}>
               로그인
             </button>
           </li>
           <li className="navSecondMenuItem">
-            <button className="cartButton" style={{ color: navFontColor }}>
+            <button className={`cartButton ${selectedMenu !== 0 && 'white'}`}>
               카트
             </button>
           </li>
