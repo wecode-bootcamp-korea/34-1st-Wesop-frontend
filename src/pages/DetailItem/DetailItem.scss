@@ -1,16 +1,32 @@
-.container {
+.detailItem {
   width: 100vw;
+
+  nav {
+    display: flex;
+    height: 80px;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    background-color: black;
+  }
 
   .topContainer {
     display: flex;
+    position: relative;
     flex-direction: row;
-    margin-top: 100px;
-    border-top: 1px solid #333333;
+    padding-top: 120px;
+
+    .logo {
+      position: absolute;
+      font-size: 30px;
+      top: 90px;
+      left: 40px;
+    }
 
     .imgBox {
-      width: 65%;
       display: flex;
       justify-content: right;
+      width: 65%;
 
       img {
         height: 500px;
@@ -26,26 +42,18 @@
       }
 
       .titleBox {
-        height: 130px;
-
-        border-bottom: 1px solid #333333;
+        height: 100px;
       }
+
       .title {
         font-size: 30px;
       }
+
       .description {
         padding-bottom: 20px;
       }
+
       .categories {
-        .category {
-          border-bottom: 0.5px solid #333333;
-          height: 50px;
-
-          .element {
-            font-weight: lighter;
-          }
-        }
-
         p {
           margin: 7px 0 7px 0;
           font-size: 15px;
@@ -68,47 +76,212 @@
         border-radius: 0;
         border: none;
         margin-bottom: 10px;
+
+        &:hover {
+          background-color: black;
+          cursor: pointer;
+        }
       }
       .recommendNewItem {
         p {
           margin: 10px 0 10px 0;
+          font-size: 15px;
         }
         .text {
           font-weight: 400;
         }
-        .itemName {
+        .newItemName {
           font-weight: lighter;
+
+          &:hover {
+            text-decoration: underline;
+            text-decoration-thickness: 1px;
+          }
         }
+      }
+    }
+  }
+  .serviceContainer {
+    display: flex;
+    flex-direction: row;
+    width: 100vw;
+    height: 100px;
+    margin: 180px 0 180px 0;
+
+    .forBorder {
+      border-right: 0.7px solid #333333;
+    }
+
+    .freeBox {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 50%;
+
+      .topText {
+        font-weight: 400;
+      }
+
+      p {
+        margin: 10px 0 10px 0;
+        font-weight: lighter;
+        color: #333333;
+      }
+    }
+  }
+
+  .howToUseContainer {
+    display: flex;
+    width: 100vw;
+    height: 750px;
+
+    .itemImage {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 50%;
+      background-color: #edebde;
+    }
+
+    .howToUseBox {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #f6f5e8;
+      width: 50%;
+
+      .howToUseWrapper {
+        width: 70%;
+      }
+
+      .howToUseTitle {
+        color: #333333;
+        margin-bottom: 15px;
+        font-weight: lighter;
+      }
+
+      .howToUseText {
+        margin-bottom: 20px;
+        font-size: 25px;
+      }
+
+      p {
+        margin: 10px 0 10px 0;
       }
     }
   }
 
   .bottomContainer {
+    position: relative;
     margin-top: 200px;
     margin-bottom: 200px;
 
+    &:hover {
+      .leftArrow {
+        opacity: 1;
+        margin-left: 0;
+      }
+      .rightArrow {
+        opacity: 1;
+        margin-right: 0;
+      }
+    }
+
+    .leftArrow {
+      position: absolute;
+      width: 80px;
+      left: 0;
+      top: 40%;
+      margin-left: -80px;
+      opacity: 0;
+      transition: all 0.5s ease-in-out;
+      z-index: 1;
+    }
+    .rightArrow {
+      position: absolute;
+      width: 80px;
+      right: 0;
+      top: 40%;
+      margin-right: -80px;
+      opacity: 0;
+      transition: all 0.5s ease-in-out;
+      z-index: 1;
+    }
+
     .carouselWrapper {
-      width: 1000px;
-      height: 350px;
-      overflow: hidden;
+      position: relative;
+      width: 1200px;
+      height: 550px;
+      margin: 0 auto;
+      overflow-x: scroll;
+
+      &::-webkit-scrollbar {
+        height: 3px;
+      }
+      &::-webkit-scrollbar-thumb {
+        height: auto;
+        background-color: #333333;
+      }
+      &::-webkit-scrollbar-track {
+        background-color: #cccbc1;
+      }
 
       .carousel {
         display: flex;
-      }
+        position: absolute;
+        transition: 1s;
 
-      .image {
-        width: 300px;
+        .imgBox {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          height: 100%;
+
+          .image {
+            height: 350px;
+            margin-top: 50px;
+          }
+        }
+        .recommendTitleBox {
+          width: 480px;
+          height: 400px;
+          margin-left: 20px;
+
+          p {
+            font-size: 30px;
+            color: #333333;
+            font-weight: 400;
+          }
+        }
+        .text {
+          margin-top: 15px;
+
+          p {
+            margin: 10px 0 10px 0;
+            font-weight: 300;
+          }
+          .recommendedItemName {
+            &:hover {
+              text-decoration: underline;
+              text-decoration-thickness: 1px;
+              cursor: pointer;
+            }
+          }
+        }
       }
     }
   }
-  .rightArrow {
-    position: absolute;
-    top: 1000px;
-    left: 32px;
-    font-size: 32px;
-    color: #000;
-    z-index: 10;
-    cursor: pointer;
-    user-select: none;
+
+  .categories {
+    border-top: 2px solid #333333;
+    .category {
+      border-bottom: 0.5px solid #333333;
+      height: 50px;
+
+      .element {
+        font-weight: lighter;
+      }
+    }
   }
 }
