@@ -13,7 +13,7 @@ const ItemLists = props => {
         <ul className="wrapperItemTypes">
           {ITEM_TYPES.map(itemtype => (
             <li key={itemtype.id} className="itemType">
-              <a href="#" className="itemTypeText">
+              <a href="/" className="itemTypeText">
                 {itemtype.type_name}
               </a>
             </li>
