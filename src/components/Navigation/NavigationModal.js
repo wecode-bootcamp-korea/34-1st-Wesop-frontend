@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const NavigationModal = () => {
   return (
-    <section className="navWideModalBox">
+    <section className="navigationModal">
       <div className="wesopLogoWrap">
         <Link to="/" className="wesopLogo">
           <span className="wesopLogoInWideModal">Wēsop</span>
@@ -14,7 +14,9 @@ const NavigationModal = () => {
           <ul className="categories">
             <h2 className="categoryTitle">카테고리</h2>
             <li className="categoryInList">
-              <Link to="/">스킨 케어 모두 보기</Link>
+              <Link to="/" className="listLink">
+                <span className="listLabel">스킨 케어 모두 보기</span>
+              </Link>
             </li>
           </ul>
         </div>
@@ -22,13 +24,17 @@ const NavigationModal = () => {
           <ul className="categories">
             <h2 className="categoryTitle">피부타입</h2>
             <li className="categoryInList">
-              <Link to="/">중성</Link>
+              <Link to="/" className="listLink">
+                <span className="listLabel">중성</span>
+              </Link>
             </li>
           </ul>
           <ul className="categories">
             <h2 className="categoryTitle">레인지</h2>
             <li className="categoryInList">
-              <Link to="/">파슬리 씨드</Link>
+              <Link to="/" className="listLink">
+                <span className="listLabel">파슬리 씨드</span>
+              </Link>
             </li>
           </ul>
         </div>
@@ -36,7 +42,9 @@ const NavigationModal = () => {
           <ul className="categories">
             <h2 className="categoryTitle">신제품</h2>
             <li className="categoryInList">
-              <Link to="/">이그절티드 아이 세럼</Link>
+              <Link to="/" className="listLink">
+                <span className="listLabel">이그절티드 아이 세럼</span>
+              </Link>
             </li>
           </ul>
         </div>

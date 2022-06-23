@@ -27,6 +27,7 @@
   width: 100%;
   padding: 0px 40px;
   background-color: #333;
+
   //부모 선택자 참조 "&"(스타일 덮어쓰기 할때 유용)
   &.white {
     background-color: #fffef2;
@@ -46,22 +47,24 @@
       font-size: 14px;
 
       .wesopLogo {
-        color: #fffef2;
         @include navButtonColor;
-        font-size: 30px;
         @include wesopLogoFont;
+        color: #fffef2;
+        font-size: 30px;
         text-decoration: none;
+
         &.white {
           color: #333;
         }
       }
 
       .navMenuLink {
+        @include navButtonColor;
         padding: 4px;
         color: #fffef2;
-        @include navButtonColor;
         font-size: 14px;
         text-decoration: none;
+
         &.white {
           color: #333;
         }
@@ -72,9 +75,10 @@
       }
 
       .navClosingButton {
+        @include navButtonColor;
         color: #fffef2;
         font-size: 14px;
-        @include navButtonColor;
+
         &.white {
           color: #333;
         }
@@ -98,25 +102,28 @@
       display: flex;
       align-items: center;
       height: 80px;
+
       &:first-child {
         margin-right: 14px;
       }
 
       .loginButton {
+        @include navButtonColor;
         padding: 4px;
         color: #fffef2;
         font-size: 14px;
-        @include navButtonColor;
+
         &.white {
           color: #333;
         }
       }
 
       .cartButton {
+        @include navButtonColor;
         padding: 4px;
         color: #fffef2;
         font-size: 14px;
-        @include navButtonColor;
+
         &.white {
           color: #333;
         }
@@ -125,18 +132,19 @@
   }
 }
 
-.navWideModalBox {
+.navigationModal {
   display: flex;
   width: 100%;
 
   .wesopLogoWrap {
     flex: 1.6666;
     margin-top: 90px;
+
     .wesopLogoInWideModal {
+      @include wesopLogoFont;
       width: 120px;
       margin-left: 40px;
       font-size: 40px;
-      @include wesopLogoFont;
     }
   }
   .navModalListWarp {
@@ -144,39 +152,106 @@
     flex: 4.9998;
     margin-top: 90px;
     margin-bottom: 40px;
+
     .modalListLeft {
       @include modalListsDefault();
+
       .categories {
         margin-bottom: 45px;
+
         .categoryTitle {
           @include wideModalListsInterval;
         }
+
         .categoryInList {
           @include wideModalListsInterval;
+
+          .listLink {
+            position: relative;
+
+            .listLabel:before {
+              position: absolute;
+              bottom: 0;
+              margin-bottom: -3px;
+              width: 0;
+              height: 1px;
+              background-color: #333;
+              transition: width 0.3s;
+              content: '';
+            }
+
+            .listLabel:hover:before {
+              width: 100%;
+            }
+          }
         }
       }
     }
     .modalListCenter {
       @include modalListsDefault();
+
       .categories {
         margin-bottom: 45px;
+
         .categoryTitle {
           @include wideModalListsInterval;
         }
+
         .categoryInList {
           @include wideModalListsInterval;
+
+          .listLink {
+            position: relative;
+
+            .listLabel:before {
+              position: absolute;
+              bottom: 0;
+              margin-bottom: -3px;
+              width: 0;
+              height: 1px;
+              background-color: #333;
+              transition: width 0.3s;
+              content: '';
+            }
+
+            .listLabel:hover:before {
+              width: 100%;
+            }
+          }
         }
       }
     }
     .modalListRight {
       @include modalListsDefault();
+
       .categories {
         margin-bottom: 45px;
+
         .categoryTitle {
           @include wideModalListsInterval;
         }
+
         .categoryInList {
           @include wideModalListsInterval;
+
+          .listLink {
+            position: relative;
+
+            .listLabel:before {
+              position: absolute;
+              bottom: 0;
+              margin-bottom: -3px;
+              width: 0;
+              height: 1px;
+              background-color: #333;
+              transition: width 0.3s;
+              content: '';
+            }
+
+            .listLabel:hover:before {
+              width: 100%;
+            }
+          }
         }
       }
     }
@@ -185,6 +260,7 @@
   .navModalImage {
     flex: 3.3332;
     height: calc(100vh - 80px);
+
     .handHoldingMirror {
       width: 100%;
       height: 100%;

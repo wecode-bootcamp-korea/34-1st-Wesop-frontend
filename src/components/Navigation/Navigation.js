@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import './Navigation.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass, faXmark } from '@fortawesome/free-solid-svg-icons';
 import NavigationModal from './NavigationModal';
+import './Navigation.scss';
 
 const Navigation = props => {
   const [mockNavMenu, setMockNavMenu] = useState([]);
