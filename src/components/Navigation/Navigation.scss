@@ -8,18 +8,6 @@
   font-family: 'LeferiPoint-SpecialA';
 }
 
-@mixin wideModalListsInterval {
-  height: 21px;
-  margin-bottom: 12px;
-}
-
-@mixin modalListsDefault {
-  flex: 1.6666;
-  width: calc(50% + 3vw);
-  padding-right: 3vw;
-  font-size: 14px;
-}
-
 .navBox {
   display: flex;
   justify-content: space-between;
@@ -27,11 +15,14 @@
   width: 100%;
   padding: 0px 40px;
   background-color: #333;
+  color: #fffef2;
 
   //부모 선택자 참조 "&"(스타일 덮어쓰기 할때 유용)
+  //최상위 태그에 변경 사항 걸고 나머지엔 inherit부여.
   &.white {
     background-color: #fffef2;
     border-bottom: 1px solid #eaeae8;
+    color: #333;
   }
 
   .navPrimaryMenu {
@@ -49,25 +40,17 @@
       .wesopLogo {
         @include navButtonColor;
         @include wesopLogoFont;
-        color: #fffef2;
+        color: inherit;
         font-size: 30px;
         text-decoration: none;
-
-        &.white {
-          color: #333;
-        }
       }
 
       .navMenuLink {
         @include navButtonColor;
         padding: 4px;
-        color: #fffef2;
+        color: inherit;
         font-size: 14px;
         text-decoration: none;
-
-        &.white {
-          color: #333;
-        }
 
         .navIcon {
           font-size: 14px;
@@ -76,12 +59,8 @@
 
       .navClosingButton {
         @include navButtonColor;
-        color: #fffef2;
+        color: inherit;
         font-size: 14px;
-
-        &.white {
-          color: #333;
-        }
 
         .navIcon {
           margin-left: 7px;
@@ -110,160 +89,16 @@
       .loginButton {
         @include navButtonColor;
         padding: 4px;
-        color: #fffef2;
+        color: inherit;
         font-size: 14px;
-
-        &.white {
-          color: #333;
-        }
       }
 
       .cartButton {
         @include navButtonColor;
         padding: 4px;
-        color: #fffef2;
+        color: inherit;
         font-size: 14px;
-
-        &.white {
-          color: #333;
-        }
       }
-    }
-  }
-}
-
-.navigationModal {
-  display: flex;
-  width: 100%;
-
-  .wesopLogoWrap {
-    flex: 1.6666;
-    margin-top: 90px;
-
-    .wesopLogoInWideModal {
-      @include wesopLogoFont;
-      width: 120px;
-      margin-left: 40px;
-      font-size: 40px;
-    }
-  }
-  .navModalListWarp {
-    display: flex;
-    flex: 4.9998;
-    margin-top: 90px;
-    margin-bottom: 40px;
-
-    .modalListLeft {
-      @include modalListsDefault();
-
-      .categories {
-        margin-bottom: 45px;
-
-        .categoryTitle {
-          @include wideModalListsInterval;
-        }
-
-        .categoryInList {
-          @include wideModalListsInterval;
-
-          .listLink {
-            position: relative;
-
-            .listLabel:before {
-              position: absolute;
-              bottom: 0;
-              margin-bottom: -3px;
-              width: 0;
-              height: 1px;
-              background-color: #333;
-              transition: width 0.3s;
-              content: '';
-            }
-
-            .listLabel:hover:before {
-              width: 100%;
-            }
-          }
-        }
-      }
-    }
-    .modalListCenter {
-      @include modalListsDefault();
-
-      .categories {
-        margin-bottom: 45px;
-
-        .categoryTitle {
-          @include wideModalListsInterval;
-        }
-
-        .categoryInList {
-          @include wideModalListsInterval;
-
-          .listLink {
-            position: relative;
-
-            .listLabel:before {
-              position: absolute;
-              bottom: 0;
-              margin-bottom: -3px;
-              width: 0;
-              height: 1px;
-              background-color: #333;
-              transition: width 0.3s;
-              content: '';
-            }
-
-            .listLabel:hover:before {
-              width: 100%;
-            }
-          }
-        }
-      }
-    }
-    .modalListRight {
-      @include modalListsDefault();
-
-      .categories {
-        margin-bottom: 45px;
-
-        .categoryTitle {
-          @include wideModalListsInterval;
-        }
-
-        .categoryInList {
-          @include wideModalListsInterval;
-
-          .listLink {
-            position: relative;
-
-            .listLabel:before {
-              position: absolute;
-              bottom: 0;
-              margin-bottom: -3px;
-              width: 0;
-              height: 1px;
-              background-color: #333;
-              transition: width 0.3s;
-              content: '';
-            }
-
-            .listLabel:hover:before {
-              width: 100%;
-            }
-          }
-        }
-      }
-    }
-  }
-
-  .navModalImage {
-    flex: 3.3332;
-    height: calc(100vh - 80px);
-
-    .handHoldingMirror {
-      width: 100%;
-      height: 100%;
     }
   }
 }

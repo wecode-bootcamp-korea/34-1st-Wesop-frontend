@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass, faXmark } from '@fortawesome/free-solid-svg-icons';
-import NavigationModal from './NavigationModal';
+import NavigationModal from './NavigationModal/NavigationModal';
 import './Navigation.scss';
 
 const Navigation = props => {
@@ -25,7 +25,7 @@ const Navigation = props => {
   };
 
   useEffect(() => {
-    fetch('/data/navMockData.json')
+    fetch('/data/categories.json')
       .then(res => res.json())
       .then(data => {
         setMockNavMenu(data);
@@ -37,10 +37,7 @@ const Navigation = props => {
       <nav className={`navBox ${selectedMenu !== 0 && 'white'}`}>
         <ul className="navPrimaryMenu">
           <li className="navPrimaryMenuItem">
-            <Link
-              to="/"
-              className={`wesopLogo ${selectedMenu !== 0 && 'white'}`}
-            >
+            <Link to="/" className="wesopLogo">
               Wēsop
             </Link>
           </li>
@@ -53,30 +50,24 @@ const Navigation = props => {
                 key={menu.id}
               >
                 <button
-                  className={`navMenuLink ${selectedMenu !== 0 && 'white'}`}
+                  className="navMenuLink"
                   onClick={() => {
                     setSelectedMenu(menu.id);
                     modalChange(true);
                   }}
                 >
-                  {menu.label}
+                  {menu.name}
                 </button>
               </li>
             );
           })}
           <li className="navPrimaryMenuItem">
-            <Link
-              to="/"
-              className={`navMenuLink ${selectedMenu !== 0 && 'white'}`}
-            >
-              스토리
+            <Link to="" className="navMenuLink">
+              스토어
             </Link>
           </li>
           <li className="navPrimaryMenuItem">
-            <Link
-              to="/"
-              className={`navMenuLink ${selectedMenu !== 0 && 'white'}`}
-            >
+            <Link to="" className="navMenuLink">
               <FontAwesomeIcon icon={faMagnifyingGlass} className="navIcon" />
             </Link>
           </li>
@@ -84,7 +75,7 @@ const Navigation = props => {
           {navClosingBtn && (
             <li className="navPrimaryMenuItem">
               <button
-                className={`navClosingButton ${selectedMenu !== 0 && 'white'}`}
+                className="navClosingButton"
                 onClick={navClosingButtonControl}
               >
                 <span>닫기</span>
@@ -95,18 +86,14 @@ const Navigation = props => {
         </ul>
         <ul className="navSecondMenu">
           <li className="navSecondMenuItem">
-            <button className={`loginButton ${selectedMenu !== 0 && 'white'}`}>
-              로그인
-            </button>
+            <button className="loginButton">로그인</button>
           </li>
           <li className="navSecondMenuItem">
-            <button className={`cartButton ${selectedMenu !== 0 && 'white'}`}>
-              카트
-            </button>
+            <button className="cartButton">카트</button>
           </li>
         </ul>
       </nav>
-      {navClosingBtn && <NavigationModal />}
+      {navClosingBtn && <NavigationModal mockNavMenu={mockNavMenu} />}
     </>
   );
 };
