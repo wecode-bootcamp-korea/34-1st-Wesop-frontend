@@ -9,6 +9,13 @@ const Navigation = props => {
   const [mockNavMenu, setMockNavMenu] = useState([]);
   const [navClosingBtn, setNavClosingBtn] = useState(false);
   const [selectedMenu, setSelectedMenu] = useState(0);
+  const [mockSelectedMenu, setMockSelectedMenu] = useState(
+    mockNavMenu[Number(selectedMenu)]
+  );
+
+  console.log('내가 클릭한 메뉴 번호', selectedMenu);
+
+  console.log('내가 클릭한 메뉴의 객체 불러오기', mockSelectedMenu);
 
   const modalChange = modal => {
     setNavClosingBtn(modal);
@@ -54,6 +61,7 @@ const Navigation = props => {
                   onClick={() => {
                     setSelectedMenu(menu.id);
                     modalChange(true);
+                    setMockSelectedMenu(menu.id);
                   }}
                 >
                   {menu.name}
@@ -89,11 +97,20 @@ const Navigation = props => {
             <button className="loginButton">로그인</button>
           </li>
           <li className="navSecondMenuItem">
+            <button className="signUpButton">회원가입</button>
+          </li>
+          <li className="navSecondMenuItem">
             <button className="cartButton">카트</button>
           </li>
         </ul>
       </nav>
-      {navClosingBtn && <NavigationModal mockNavMenu={mockNavMenu} />}
+      {navClosingBtn && (
+        <NavigationModal
+          mockNavMenu={mockNavMenu}
+          selectedMenu={selectedMenu}
+          mockSelectedMenu={mockSelectedMenu}
+        />
+      )}
     </>
   );
 };

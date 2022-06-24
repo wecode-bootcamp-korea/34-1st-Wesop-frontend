@@ -7,7 +7,11 @@
 @mixin wesopLogoFont {
   font-family: 'LeferiPoint-SpecialA';
 }
-
+@mixin navSecondMenuButton {
+  padding: 4px;
+  color: inherit;
+  font-size: 15px;
+}
 .navBox {
   display: flex;
   justify-content: space-between;
@@ -81,23 +85,25 @@
       display: flex;
       align-items: center;
       height: 80px;
+      margin-right: 14px;
 
-      &:first-child {
-        margin-right: 14px;
+      &:last-child {
+        margin-right: 0;
       }
 
       .loginButton {
         @include navButtonColor;
-        padding: 4px;
-        color: inherit;
-        font-size: 14px;
+        @include navSecondMenuButton();
+      }
+
+      .signUpButton {
+        @include navButtonColor;
+        @include navSecondMenuButton();
       }
 
       .cartButton {
         @include navButtonColor;
-        padding: 4px;
-        color: inherit;
-        font-size: 14px;
+        @include navSecondMenuButton();
       }
     }
   }

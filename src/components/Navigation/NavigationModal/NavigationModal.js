@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import Categories from '../Categories/Categories';
 import './NavigationModal.scss';
 
-const NavigationModal = ({ mockNavMenu }) => {
-  console.log('data', mockNavMenu);
+const NavigationModal = ({ mockNavMenu, selectedMenu }) => {
+  // console.log('데이터', mockNavMenu[selectedMenu - 1]);
+
   return (
     <section className="navigationModal">
       <div className="wesopLogoWrap">
@@ -13,15 +14,13 @@ const NavigationModal = ({ mockNavMenu }) => {
         </Link>
       </div>
       <div className="navModalListWarp">
-        <div className="modalListLeft">
-          <Categories subCategories={mockNavMenu[0].sub_categories[0]} />
-        </div>
-        <div className="modalListCenter">
-          <Categories subCategories={mockNavMenu[0].sub_categories[1]} />
-        </div>
-        <div className="modalListRight">
-          <Categories subCategories={mockNavMenu[0].sub_categories[2]} />
-        </div>
+        {mockNavMenu[selectedMenu - 1].sub_categories.map(menu => {
+          return (
+            <div className="modalList" key={menu.id}>
+              <Categories id={menu.id} name={menu.name} items={menu.items} />
+            </div>
+          );
+        })}
       </div>
       <div className="navModalImage">
         <img
