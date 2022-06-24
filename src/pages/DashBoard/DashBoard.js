@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import ItemCard from '../../components/ItemCard/ItemCard';
 import AdCard from './AdCard/AdCard';
-import './DashBoard.scss';
 import UseALink from './UseALink/UseALink';
+import './DashBoard.scss';
 
 const DashBoard = props => {
   const [items, setItems] = useState([]);
@@ -40,7 +40,7 @@ const DashBoard = props => {
               일반적인 관행을 따르지 않는 미묘한 차이의 접근법으로 만들어집니다
             </p>
             <div className="goToPerfume">
-              <UseALink theme="white" text="향수보기" />
+              <UseALink theme="dark" text="향수 보기" />
             </div>
           </div>
         </div>
@@ -76,7 +76,7 @@ const DashBoard = props => {
             topTitle="한정 출시"
             title="이솝 & 릭 오웬스 트래블 키트"
             description="향기와 스타일을 추구하고 자신만의 길을 개척하려는 사람을 위한 키트로 톡 쏘는 향기가 단연 돋보이는 오 드 뚜왈렛과 세라믹 비즈, 릭 오웬스가 큐레이팅한 헤어와 바디 케어 필수품으로 구성되어 있습니다."
-            plusInfo="트래블 키트보기"
+            plusInfo="트래블 키트 보기"
           />
           <img src="/images/perfumephoto.avif" alt="perfumephoto" />
         </div>

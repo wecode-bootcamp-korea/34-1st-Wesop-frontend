@@ -1,25 +1,24 @@
-aside.adCard {
+.adCard {
   width: 570.99px;
   height: 592.08px;
   padding-left: 80px;
-  background-color: bisque;
 
-  article.adCardArticle {
+  .adCardArticle {
     width: 490.99px;
     height: 278.09px;
 
-    header.adCardHeader {
+    .adCardHeader {
       width: 490.99px;
       height: 113.7px;
 
-      h3.adCardH3 {
+      .adCardTopTitle {
         width: 490.99px;
         height: 23.8px;
         margin-bottom: 20px;
         font-size: 14px;
       }
 
-      h2.adCardH2 {
+      .adCardMainTitle {
         width: 490.99px;
         height: 39.9px;
         margin-bottom: 30px;
@@ -27,21 +26,16 @@ aside.adCard {
       }
     }
 
-    p {
-      font-size: 16px;
+    .adStory {
       margin-bottom: 30px;
+      font-size: 16px;
+      line-height: 26px;
     }
-
-    // .plusButton {
-    //   width: 489.99px;
-    //   height: 80px;
-    //   margin-top: 30px;
 
     a {
       width: 300px;
       height: 60px;
       padding: 19px 55px 19px 23px;
     }
-    // }
   }
 }
