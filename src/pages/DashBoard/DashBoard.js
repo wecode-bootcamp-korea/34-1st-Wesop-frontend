@@ -1,9 +1,31 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import ItemCard from '../../components/ItemCard/ItemCard';
 import AdCard from './AdCard/AdCard';
 import './DashBoard.scss';
 import UseALink from './UseALink/UseALink';
 
 const DashBoard = props => {
+  const [items, setItems] = useState([]);
+  const [recommendItems, setRecommendItems] = useState([]);
+
+  useEffect(() => {
+    fetch('/data/perfumes.json', {
+      method: 'GET',
+    })
+      .then(res => res.json())
+      .then(data => {
+        setItems(data);
+      });
+
+    fetch('/data/recommends.json', {
+      method: 'GET',
+    })
+      .then(res => res.json())
+      .then(data => {
+        setRecommendItems(data);
+      });
+  }, []);
+
   return (
     <div className="dashBoard">
       <div className="dashBoardWrapper">
@@ -24,7 +46,18 @@ const DashBoard = props => {
         </div>
       </div>
       <section>
-        <div className="fragranceWrapper">abc</div>
+        <div className="fragranceWrapper">
+          {items.map(list => {
+            return (
+              <ItemCard
+                key={list.id}
+                itemPhoto={list.img}
+                itemName={list.name}
+                itemDescription={list.feature_name}
+              />
+            );
+          })}
+        </div>
         <div className="historyWrapper">
           <AdCard
             topTitle="더 아테네움"
@@ -33,16 +66,7 @@ const DashBoard = props => {
                 인내, 향수 제조학에 관한 이야기"
             plusInfo="더 보기"
           />
-          <video
-            style={{
-              maxWidth: '999.25px',
-              maxHeight: '592.08px',
-              display: 'block',
-            }}
-            muted
-            autoPlay
-            loop
-          >
+          <video className="dashBoardVideo" muted autoPlay loop>
             <source src="/images/abc.mp4" type="video/mp4" />
             <strong>Your browser does not support the video tag.</strong>
           </video>
@@ -59,7 +83,18 @@ const DashBoard = props => {
         <div className="goodChoice">
           <h2>탁월한 셀렉션</h2>
         </div>
-        <div className="goodChoiceWrapper"> abc </div>
+        <div className="goodChoiceWrapper">
+          {recommendItems.map(recommendList => {
+            return (
+              <ItemCard
+                key={recommendList.id}
+                itemPhoto={recommendList.img}
+                itemName={recommendList.name}
+                itemDescription={recommendList.feature_name}
+              />
+            );
+          })}{' '}
+        </div>
         <div className="closeStore">
           <AdCard
             title="스토어 로케이터"
