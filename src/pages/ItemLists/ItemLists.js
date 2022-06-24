@@ -8,14 +8,8 @@ const ItemLists = props => {
 
   useEffect(() => {
     fetch('/data/itemList.json')
-      .then(response => {
-        console.log(response);
-        return response.json();
-      })
-      .then(result => {
-        console.log(result);
-        setItemList(result);
-      });
+      .then(response => response.json())
+      .then(setItemList);
   }, []);
 
   if (itemList.length === 0) return <>loading...</>;
