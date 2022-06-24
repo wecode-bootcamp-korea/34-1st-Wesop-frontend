@@ -8,9 +8,7 @@
 }
 
 @mixin modalListsDefault {
-  // flex: 1.6666;
-  // width: calc(50% + 3vw);
-  width: 220px;
+  width: 240px;
   padding-right: 3vw;
   font-size: 16px;
 }
@@ -31,6 +29,7 @@
     }
   }
   .navModalListWarp {
+    //여기
     display: flex;
     flex: 4.9998;
     margin-top: 90px;
@@ -38,12 +37,14 @@
 
     .modalList {
       @include modalListsDefault();
+      transition: all 5s linear 0.5s;
     }
   }
 
   .navModalImage {
+    //여기
     flex: 3.3332;
-    height: calc(100vh - 80px);
+    height: calc(100vh - 83px);
 
     .handHoldingMirror {
       width: 100%;

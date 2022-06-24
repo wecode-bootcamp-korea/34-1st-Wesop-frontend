@@ -7,11 +7,11 @@ const Categories = ({ name, items }) => {
     <div className="categories">
       <ul className="categoriesWrap">
         <h2 className="categoryTitle">{name}</h2>
-        {items.map(menu => {
+        {items.map(({ id, name }) => {
           return (
-            <li className="categoryInList" key={menu.id}>
+            <li className="categoryInList" key={id}>
               <Link to="/" className="listLink">
-                <span className="listLabel">{menu.name}</span>
+                <span className="listLabel">{name}</span>
               </Link>
             </li>
           );

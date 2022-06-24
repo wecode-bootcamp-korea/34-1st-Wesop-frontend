@@ -39,7 +39,6 @@
       align-items: center;
       margin-right: 14px;
       height: 80px;
-      font-size: 14px;
 
       .wesopLogo {
         @include navButtonColor;
@@ -53,7 +52,7 @@
         @include navButtonColor;
         padding: 4px;
         color: inherit;
-        font-size: 14px;
+        font-size: 15px;
         text-decoration: none;
 
         .navIcon {
@@ -64,7 +63,7 @@
       .navClosingButton {
         @include navButtonColor;
         color: inherit;
-        font-size: 14px;
+        font-size: 15px;
 
         .navIcon {
           margin-left: 7px;

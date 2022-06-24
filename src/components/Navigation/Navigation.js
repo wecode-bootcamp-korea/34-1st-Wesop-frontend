@@ -7,15 +7,25 @@ import './Navigation.scss';
 
 const Navigation = props => {
   const [mockNavMenu, setMockNavMenu] = useState([]);
+
   const [navClosingBtn, setNavClosingBtn] = useState(false);
+
   const [selectedMenu, setSelectedMenu] = useState(0);
+
   const [mockSelectedMenu, setMockSelectedMenu] = useState(
     mockNavMenu[Number(selectedMenu)]
   );
 
-  console.log('내가 클릭한 메뉴 번호', selectedMenu);
+  // console.log('내가 클릭한 메뉴의 고유 번호', selectedMenu);
+  // console.log('내가 클릭한 메뉴에 해당되는 객체 불러오기', mockSelectedMenu);
 
-  console.log('내가 클릭한 메뉴의 객체 불러오기', mockSelectedMenu);
+  const [selectedMenuBgColor, setSelectedMenuBgColor] = useState('#fffef2');
+
+  const backgroundColorChange = selectedMenu => {
+    setSelectedMenuBgColor(
+      MODAL_BACKGROUND_COLOR[selectedMenu - 1].backgroundColor
+    );
+  };
 
   const modalChange = modal => {
     setNavClosingBtn(modal);
@@ -62,6 +72,7 @@ const Navigation = props => {
                     setSelectedMenu(menu.id);
                     modalChange(true);
                     setMockSelectedMenu(menu.id);
+                    backgroundColorChange(menu.id);
                   }}
                 >
                   {menu.name}
@@ -109,10 +120,46 @@ const Navigation = props => {
           mockNavMenu={mockNavMenu}
           selectedMenu={selectedMenu}
           mockSelectedMenu={mockSelectedMenu}
+          modalBgColor={selectedMenuBgColor}
         />
       )}
     </>
   );
 };
+
+const MODAL_BACKGROUND_COLOR = [
+  {
+    id: 1,
+    backgroundColor: '#f1efe0',
+  },
+  {
+    id: 2,
+    backgroundColor: '#ece3d2',
+  },
+  {
+    id: 3,
+    backgroundColor: '#ddd8d4',
+  },
+  {
+    id: 4,
+    backgroundColor: '#f5ece3',
+  },
+  {
+    id: 5,
+    backgroundColor: '#f6f1eb',
+  },
+  {
+    id: 6,
+    backgroundColor: '#e9efe3',
+  },
+  {
+    id: 7,
+    backgroundColor: '#eaeade',
+  },
+  {
+    id: 8,
+    backgroundColor: '#fefef2',
+  },
+];
 
 export default Navigation;
