@@ -4,7 +4,7 @@ import './ItemLists.scss';
 
 const ItemLists = props => {
   const [itemList, setItemList] = useState([]);
-  const [selectedType, setSelectedType] = useState(1);
+  const [selectedType] = useState(1);
 
   useEffect(() => {
     fetch('/data/itemList.json')
