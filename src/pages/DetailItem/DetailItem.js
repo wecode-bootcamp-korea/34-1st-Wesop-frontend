@@ -1,20 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './DetailItem.scss';
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-// import { faArrowRight, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import Slider from '../../components/Slider/Slider';
 
 const DetailItem = () => {
+  const [detailItems, setDetailItems] = useState([]);
+
+  useEffect(() => {
+    fetch('/data/mockDataDetailItem.json')
+      .then(response => response.json())
+      .then(result => setDetailItems(result));
+  }, []);
+
   const [selectedItem, setSelectedItem] = useState(ITEM_DATA[0]);
-  const [move, setMove] = useState(0);
-  // const [className, setClassName] = useState('carousel');
-
-  const moveRight = () => {
-    setMove(move - 300);
-  };
-
-  const moveLeft = () => {
-    setMove(move + 300);
-  };
 
   const check = e => {
     const { name } = e.target;
@@ -33,6 +30,7 @@ const DetailItem = () => {
       <div className="topContainer">
         <div className="logo">Wesop</div>
         <div className="imgBox">
+          {}
           <img src={selectedItem.img} alt="상품이미지" />
         </div>
         <div className="descriptionBox">
@@ -49,12 +47,15 @@ const DetailItem = () => {
               </div>
             </div>
             <div className="categories">
-              <Categories title="피부 타입" element="모든 피부" />
-              <Categories title="사용감" element="진정된, 부드러운, 가벼운" />
-              <Categories
-                title="주요 성분"
-                element="파슬리 씨드, 라벤더, 마트리카리아꽃오일"
-              />
+              {detailItems[0]?.sub_description.map(el => {
+                return (
+                  <SubDescription
+                    key={el.id}
+                    name={el.name}
+                    contents={el.contents}
+                  />
+                );
+              })}
             </div>
             <div className="sizeBox">
               <p>사이즈</p>
@@ -97,122 +98,57 @@ const DetailItem = () => {
       </div>
       <div className="howToUseContainer">
         <div className="itemImage">
-          <p>이미지</p>
+          <p>{detailItems[0]?.image}</p>
         </div>
         <div className="howToUseBox">
           <div className="howToUseWrapper">
             <div className="howToUseTitle">사용법</div>
-            <div className="howToUseText">{HOW_TO_USE_DATA.text}</div>
+            <div className="howToUseText">
+              {detailItems[0]?.additional_content}
+            </div>
             <div className="categories">
-              <Categories title="사용량" element={HOW_TO_USE_DATA.usage} />
-              <Categories title="텍스처" element={HOW_TO_USE_DATA.texture} />
-              <Categories title="향" element={HOW_TO_USE_DATA.scent} />
+              {detailItems[0]?.products_features.map(el => {
+                return (
+                  <HowToUse key={el.id} name={el.name} contents={el.contents} />
+                );
+              })}
             </div>
           </div>
         </div>
       </div>
-      <div className="bottomContainer">
-        <img
-          src="./images/leftArrow.png"
-          className="leftArrow"
-          onClick={moveLeft}
-          alt="화살표 아이콘"
-        />
-        <img
-          src="./images/rightArrow.png"
-          className="rightArrow"
-          onClick={moveRight}
-          alt="화살표 아이콘"
-        />
-        <div className="carouselWrapper">
-          <div
-            className="carousel"
-            style={{ transform: `translateX(${move}px)` }}
-          >
-            <div className="recommendTitleBox">
-              <p>함께 사용하기 좋은 제품</p>
-            </div>
-            {SLIDE_MODULE_DATA.map(el => {
-              return (
-                <SlideModule
-                  key={el.id}
-                  name={el.name}
-                  img={el.img}
-                  description={el.description}
-                />
-              );
-            })}
-          </div>
-          {/* <FontAwesomeIcon icon={faArrowLeft} className="leftArrow" size="2x" />
-          <FontAwesomeIcon
-            icon={faArrowRight}
-            className="rightArrow"
-            size="2x"
-          /> */}
-        </div>
-      </div>
+      <Slider />
     </div>
   );
 };
 
-const Categories = ({ title, element }) => {
+const HowToUse = ({ name, contents }) => {
   return (
     <div className="category">
-      <p>{title}</p>
-      <p className="element">{element}</p>
+      <p>{name}</p>
+      <p className="element">{contents}</p>
     </div>
   );
 };
 
-const SlideModule = ({ img, name, description }) => {
+const SubDescription = ({ name, contents }) => {
   return (
-    <div className="imgBox">
-      <img src={img} className="image" alt="제품 사진" />
-      <div className="text">
-        <p className="recommendedItemName">{name}</p>
-        <p>{description}</p>
-      </div>
+    <div className="category">
+      <p>{name}</p>
+      <p className="element">{contents}</p>
     </div>
   );
-};
-
-const SLIDE_MODULE_DATA = [
-  {
-    id: 1,
-    name: '파슬리 씨드 안티 옥시던트 인텐스 세럼',
-    description: '지속적인 수분을 공급하는 항산화 세럼',
-    img: './images/Aesop_Skin_Parsley_Seed_Anti-Oxidant_Intense_Serum_60mL_Web_Large_684x668px.webp',
-  },
-  {
-    id: 2,
-    name: '비 앤 티 밸런싱 토너',
-    description: '균형감, 수분 공급, 가벼운 마무리',
-    img: './images/AesopSkin-B-Tea-Balancing-Toner-200mL-large.webp',
-  },
-  {
-    id: 3,
-    name: '파슬리 씨드 안티 옥시던트 스킨케어 키트',
-    description: '항산화 성분이 풍부한 앙상블',
-    img: './images/Aesop_Kits_Parsley_Seed_Anti-Oxidant_Skin_Care_Kit_Web_Large_1584x962px.webp',
-  },
-];
-
-const HOW_TO_USE_DATA = {
-  id: 1,
-  text: '클렌징 후 화장솜이나 손에 덜어내어 세안을 마친 얼굴과 목에 두드리세요',
-  usage: '반 티스푼',
-  texture: '워터 제형',
-  scent: '플로럴, 허브향',
 };
 
 const ITEM_DATA = [
   {
+    id: 1,
     name: 'small',
     size: '100mL',
     price: '₩ 45,000',
     img: '/images/Large-PNG-Aesop-Skin-Parsley-Seed-Anti-Oxidant-Facial-Toner-100mL-medium.png',
   },
   {
+    id: 2,
     name: 'large',
     size: '200mL',
     price: '₩ 73,000',

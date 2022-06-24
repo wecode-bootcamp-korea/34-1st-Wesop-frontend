@@ -1,0 +1,40 @@
+[
+  {
+    "name": "파슬리 씨드 안티 옥시던트 페이셜 토너",
+    "contents": "피부 진정과 수분 공급을 위한 부드러운 토너",
+    "sub_description": [
+      { "id": 1, "name": "피부 타입", "contents": "모든 피부" },
+      { "id": 2, "name": "사용감", "contents": "진정된, 부드러운, 가벼운" },
+      {
+        "id": 3,
+        "name": "주요 성분",
+        "contents": "파슬리  씨드, 라벤더, 마트리카리아꽃오일"
+      }
+    ],
+    "size": [
+      {
+        "id": 1,
+        "name": "100mL",
+        "image_url": "/images/Large-PNG-Aesop-Skin-Parsley-Seed-Anti-Oxidant-Facial-Toner-100mL-medium.png",
+        "price": "₩ 45,000"
+      },
+      {
+        "id": 2,
+        "name": "200mL",
+        "image_url": "images/Aesop-Skin-Parsley-Seed-Anti-Oxidant-Facial-Toner-200mL-large.webp",
+        "price": "₩ 73,000"
+      }
+    ],
+    "image": "이미지 주소",
+    "additional_content": "클렌징 후 화장솜이나 손에 덜어내어 세안을 마친 얼굴과 목에 두드리세요",
+    "products_features": [
+      { "id": 1, "name": "사용량", "contents": "반 티스푼" },
+      { "id": 2, "name": "텍스처", "contents": "워터 제형" },
+      {
+        "id": 3,
+        "name": "향",
+        "contents": "플로럴, 허브향"
+      }
+    ]
+  }
+]
