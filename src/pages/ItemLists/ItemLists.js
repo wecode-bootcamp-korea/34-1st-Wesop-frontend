@@ -18,6 +18,8 @@ const ItemLists = props => {
       });
   }, []);
 
+  if (itemList.length === 0) return <>loading...</>;
+
   return (
     <div className="itemLists">
       <nav style={{ backgroundColor: 'yellow', height: '80px' }}> nav </nav>
@@ -39,13 +41,12 @@ const ItemLists = props => {
           <div className="itemDescription">
             <h1 className="title">{itemList[selectedType]?.type_title}</h1>
             <h2 className="description">
-              {itemList[selectedType]?.type_description}
+              {itemList[selectedType].type_description}
             </h2>
           </div>
-          {itemList[selectedType] &&
-            itemList[selectedType].items.map(item => (
-              <Item key={item.id} item={item} />
-            ))}
+          {itemList[selectedType].items.map(item => (
+            <Item key={item.id} item={item} />
+          ))}
         </section>
       </main>
     </div>
