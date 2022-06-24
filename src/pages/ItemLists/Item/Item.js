@@ -33,8 +33,9 @@ const Item = ({ item }) => {
                   <input
                     className="checkModel"
                     type="radio"
-                    name="itemType"
+                    name={`${item.id}itemType`}
                     value={index}
+                    defaultChecked={selectedIndex === index}
                     onChange={handleItemTypeChange}
                   />
                   {model.name}
