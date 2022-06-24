@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './Item.scss';
-const Item = ({ item }) => {
+const Item = ({ item: { id, name, subTexts, models } }) => {
   const [selectedIndex, setSelectedIndex] = useState(0);
 
   const handleItemTypeChange = ({ target: { value } }) => {
@@ -8,32 +8,27 @@ const Item = ({ item }) => {
   };
   return (
     <div className="item">
-      <p className="title" />
-      <img
-        className="image"
-        src={item.models[selectedIndex]?.image}
-        alt="test"
-      />
-      <p className="name">{item.name}</p>
-      {item.models.length === 1 ? (
+      <img className="image" src={models[selectedIndex]?.image} alt="test" />
+      <p className="name">{name}</p>
+      {models.length === 1 ? (
         <div className="wrapperOneModel">
           <p className="model">
-            {`${item.models[selectedIndex]?.name} / ₩ ${item.models[selectedIndex]?.price}`}
+            {`${models[selectedIndex]?.name} / ₩ ${models[selectedIndex]?.price}`}
           </p>
         </div>
       ) : (
         <div className="wrapperManyModel">
           <p className="model">
-            {`${item.models.length} 사이즈 / ₩ ${item.models[0].price} 원 부터`}
+            {`${models.length} 사이즈 / ₩ ${models[0].price} 원 부터`}
           </p>
           <div className="wrapperCheckModel">
-            {item.models.map((model, index) => {
+            {models.map((model, index) => {
               return (
                 <label key={index} className="labelModel">
                   <input
                     className="checkModel"
                     type="radio"
-                    name={`${item.id}itemType`}
+                    name={`${id}itemType`}
                     value={index}
                     defaultChecked={selectedIndex === index}
                     onChange={handleItemTypeChange}
@@ -46,7 +41,7 @@ const Item = ({ item }) => {
         </div>
       )}
       <div className="wrapperSubText">
-        {item.subTexts.map(({ id, title, discription }) => {
+        {subTexts.map(({ id, title, discription }) => {
           return (
             <div key={id} className="subText">
               <span className="title">{title}</span>
@@ -56,7 +51,7 @@ const Item = ({ item }) => {
         })}
       </div>
       <button className="addCart">
-        카트에 추가 - ₩ {item.models[selectedIndex]?.price}
+        카트에 추가 - ₩ {models[selectedIndex]?.price}
       </button>
     </div>
   );
