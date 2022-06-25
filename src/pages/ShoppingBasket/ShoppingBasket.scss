@@ -1,0 +1,81 @@
+// .shoppingBasket {
+//   position: relative;
+//   width: 100vw;
+//   height: 150px;
+//   background-color: rgba(0, 0, 0, 0.7);
+
+//   .list {
+//     position: absolute;
+//     top: 0;
+//     left: 0;
+//     height: 80vh;
+//     width: 100vw;
+//   }
+
+//   .black {
+//     position: absolute;
+//     height: 20vh;
+//     width: 100vw;
+//     bottom: -20vh;
+//     left: 0;
+//     z-index: 2;
+//   }
+// }
+
+.shoppingBasket {
+  width: 100vw;
+  max-height: 100vh;
+  overflow-y: scroll;
+  background-color: #252525;
+  padding: 40px;
+  .list {
+    display: grid;
+    grid-template-columns: 3.7fr 2.3fr 2fr 1fr;
+    color: white;
+    .title {
+      padding-bottom: 25px;
+      border-bottom: 2px solid #3b3b3a;
+      color: #bcbbb4;
+      font-size: 15px;
+    }
+    .info {
+      padding: 25px 0;
+      border-bottom: 1px solid #3b3b3a;
+      color: #fffef2;
+    }
+
+    .size {
+      color: #bcbbb4;
+    }
+
+    .price {
+      text-align: end;
+    }
+  }
+
+  .wrapperPayment {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 370px;
+    height: 150px;
+    margin: 60px 0 0 auto;
+    color: #bcbbb4;
+
+    .wrapperAmount {
+      display: flex;
+      justify-content: space-between;
+
+      .amount {
+        font-size: 25px;
+        color: #fffef2;
+      }
+    }
+
+    .payment {
+      height: 60px;
+      background-color: #eaeadf;
+      color: #212121;
+    }
+  }
+}
