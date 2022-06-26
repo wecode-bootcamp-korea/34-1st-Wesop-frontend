@@ -1,0 +1,20 @@
+import React from 'react';
+import './BasketRow.scss';
+const BasketRow = ({ name, size, quantities, price }) => {
+  return (
+    <>
+      <div className="info">{name}</div>
+      <div className="info size">{size}</div>
+      <select className="info quantities">
+        {[1, 2, 3, 4, 5].map(el => (
+          <option key={el} value={el} selected={el === quantities}>
+            {el}
+          </option>
+        ))}
+      </select>
+      <div className="info price">₩ {price}</div>
+    </>
+  );
+};
+
+export default BasketRow;

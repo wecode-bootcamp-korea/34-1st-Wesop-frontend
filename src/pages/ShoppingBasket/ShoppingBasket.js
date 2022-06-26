@@ -1,6 +1,7 @@
 import { faX } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useEffect } from 'react';
+import BasketRow from './BasketRowz/BasketRow';
 import './ShoppingBasket.scss';
 
 const ShoppingBasket = ({ show, setShoppingBasketShow }) => {
@@ -20,34 +21,12 @@ const ShoppingBasket = ({ show, setShoppingBasketShow }) => {
         <div className="title price">
           <FontAwesomeIcon icon={faX} />
         </div>
-        <div className="info">샴푸</div>
-        <div className="info size">100 mL</div>
-        <div className="info">1</div>
-        <div className="info price">₩ 20,000</div>
-        <div className="info">샴푸</div>
-        <div className="info size">100 mL</div>
-        <div className="info">1</div>
-        <div className="info price">₩ 20,000</div>
-        <div className="info">샴푸</div>
-        <div className="info size">100 mL</div>
-        <div className="info">1</div>
-        <div className="info price">₩ 20,000</div>
-        <div className="info">샴푸</div>
-        <div className="info size">100 mL</div>
-        <div className="info">1</div>
-        <div className="info price">₩ 20,000</div>
-        <div className="info">샴푸</div>
-        <div className="info size">100 mL</div>
-        <div className="info">1</div>
-        <div className="info price">₩ 20,000</div>
-        <div className="info">샴푸</div>
-        <div className="info size">100 mL</div>
-        <div className="info">1</div>
-        <div className="info price">₩ 20,000</div>
-        <div className="info">샴푸</div>
-        <div className="info size">100 mL</div>
-        <div className="info">1</div>
-        <div className="info price">₩ 20,000</div>
+        <BasketRow name="샴푸" size="100 mL" quantities={2} price={2000} />
+        <BasketRow name="샴푸" size="100 mL" quantities={1} price={2000} />
+        <BasketRow name="샴푸" size="100 mL" quantities={2} price={2000} />
+        <BasketRow name="샴푸" size="100 mL" quantities={4} price={2000} />
+        <BasketRow name="샴푸" size="100 mL" quantities={5} price={2000} />
+        <BasketRow name="샴푸" size="100 mL" quantities={3} price={2000} />
       </div>
       <div className="wrapperPayment">
         <p className="description">전 제품 무료 배송 혜택을 즐겨보세요</p>
