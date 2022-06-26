@@ -33,6 +33,12 @@ const Navigation = props => {
     setSelectedMenuImage(MODAL_BG_COLORS_AND_IMAGES[selectedMenu - 1].image);
   };
 
+  const [activeAnimation, setActiveAnimation] = useState('');
+
+  const activeAnimationModal = () => {
+    setActiveAnimation('animation');
+  };
+
   const modalChange = modal => {
     setNavClosingBtn(modal);
   };
@@ -80,6 +86,10 @@ const Navigation = props => {
                     setMockSelectedMenu(id);
                     backgroundColorChange(id);
                     modalImageChange(id);
+                    activeAnimationModal(true);
+                  }}
+                  onMouseLeave={() => {
+                    setActiveAnimation('');
                   }}
                 >
                   {name}
@@ -129,6 +139,7 @@ const Navigation = props => {
           mockSelectedMenu={mockSelectedMenu}
           modalBgColor={selectedMenuBgColor}
           selectedMenuImage={selectedMenuImage}
+          activeAnimation={activeAnimation}
         />
       )}
     </>
