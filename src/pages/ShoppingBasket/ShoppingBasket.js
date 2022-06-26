@@ -1,14 +1,21 @@
 import { faX } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import BasketRow from './BasketRowz/BasketRow';
 import './ShoppingBasket.scss';
 
 const ShoppingBasket = ({ show, setShoppingBasketShow }) => {
+  const [shoppingBasketItems, setShoppingBasketItems] = useState([]);
   useEffect(() => {
     document.body.style.overflow = show ? 'hidden' : 'auto';
-    document.body.style.overflow = 'hidden';
+    // document.body.style.overflow = 'hidden';
   }, [show]);
+
+  useEffect(() => {
+    const localItems = JSON.parse(localStorage.getItem('shoppingBasketItems'));
+    if (!localItems || localItems.length === 0) return;
+    setShoppingBasketItems(localItems);
+  }, []);
 
   // if (!show) return;
 
@@ -21,12 +28,8 @@ const ShoppingBasket = ({ show, setShoppingBasketShow }) => {
         <div className="title price">
           <FontAwesomeIcon icon={faX} />
         </div>
-        <BasketRow name="샴푸" size="100 mL" quantities={2} price={2000} />
-        <BasketRow name="샴푸" size="100 mL" quantities={1} price={2000} />
-        <BasketRow name="샴푸" size="100 mL" quantities={2} price={2000} />
-        <BasketRow name="샴푸" size="100 mL" quantities={4} price={2000} />
-        <BasketRow name="샴푸" size="100 mL" quantities={5} price={2000} />
-        <BasketRow name="샴푸" size="100 mL" quantities={3} price={2000} />
+        {shoppingBasketItems.length > 0 &&
+          shoppingBasketItems.map(el => <BasketRow key={el.id} {...el} />)}
       </div>
       <div className="wrapperPayment">
         <p className="description">전 제품 무료 배송 혜택을 즐겨보세요</p>
