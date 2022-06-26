@@ -10,21 +10,27 @@ const Navigation = props => {
 
   const [navClosingBtn, setNavClosingBtn] = useState(false);
 
+  //사용자가 클릭한 메뉴의 고유 번호 : selectedMenu
   const [selectedMenu, setSelectedMenu] = useState(0);
 
+  //사용자가 클릭한 메뉴에 해당되는 객체 불러오기 : mockSelectedMenu
   const [mockSelectedMenu, setMockSelectedMenu] = useState(
     mockNavMenu[Number(selectedMenu)]
   );
-
-  // console.log('내가 클릭한 메뉴의 고유 번호', selectedMenu);
-  // console.log('내가 클릭한 메뉴에 해당되는 객체 불러오기', mockSelectedMenu);
 
   const [selectedMenuBgColor, setSelectedMenuBgColor] = useState('#fffef2');
 
   const backgroundColorChange = selectedMenu => {
     setSelectedMenuBgColor(
-      MODAL_BACKGROUND_COLOR[selectedMenu - 1].backgroundColor
+      MODAL_BG_COLORS_AND_IMAGES[selectedMenu - 1].backgroundColor
     );
+  };
+
+  const [selectedMenuImage, setSelectedMenuImage] =
+    useState('./images/skincare');
+
+  const modalImageChange = selectedMenu => {
+    setSelectedMenuImage(MODAL_BG_COLORS_AND_IMAGES[selectedMenu - 1].image);
   };
 
   const modalChange = modal => {
@@ -58,24 +64,25 @@ const Navigation = props => {
               Wēsop
             </Link>
           </li>
-          {mockNavMenu.map(menu => {
+          {mockNavMenu.map(({ id, name }) => {
             return (
               <li
                 className={`navPrimaryMenuItem ${
-                  selectedMenu === menu.id && 'highlight'
+                  selectedMenu === id && 'highlight'
                 }`}
-                key={menu.id}
+                key={id}
               >
                 <button
                   className="navMenuLink"
                   onClick={() => {
-                    setSelectedMenu(menu.id);
+                    setSelectedMenu(id);
                     modalChange(true);
-                    setMockSelectedMenu(menu.id);
-                    backgroundColorChange(menu.id);
+                    setMockSelectedMenu(id);
+                    backgroundColorChange(id);
+                    modalImageChange(id);
                   }}
                 >
-                  {menu.name}
+                  {name}
                 </button>
               </li>
             );
@@ -121,44 +128,53 @@ const Navigation = props => {
           selectedMenu={selectedMenu}
           mockSelectedMenu={mockSelectedMenu}
           modalBgColor={selectedMenuBgColor}
+          selectedMenuImage={selectedMenuImage}
         />
       )}
     </>
   );
 };
 
-const MODAL_BACKGROUND_COLOR = [
+const MODAL_BG_COLORS_AND_IMAGES = [
   {
     id: 1,
     backgroundColor: '#f1efe0',
+    image: './images/skincare.jpg',
   },
   {
     id: 2,
     backgroundColor: '#ece3d2',
+    image: './images/bodyhand.jpg',
   },
   {
     id: 3,
     backgroundColor: '#ddd8d4',
+    image: './images/hair2.jpg',
   },
   {
     id: 4,
     backgroundColor: '#f5ece3',
+    image: './images/perfume.jpg',
   },
   {
     id: 5,
     backgroundColor: '#f6f1eb',
+    image: './images/home.jpg',
   },
   {
     id: 6,
     backgroundColor: '#e9efe3',
+    image: './images/travel.jpg',
   },
   {
     id: 7,
     backgroundColor: '#eaeade',
+    image: './images/giftguide.jpg',
   },
   {
     id: 8,
     backgroundColor: '#fefef2',
+    image: './images/read.jpg',
   },
 ];
 

@@ -29,24 +29,43 @@
     }
   }
   .navModalListWarp {
-    //여기
     display: flex;
     flex: 4.9998;
     margin-top: 90px;
     margin-bottom: 40px;
+    animation: fadein 1s;
+    -webkit-animation: fadein 1s;
+
+    @keyframes fadein {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
 
     .modalList {
       @include modalListsDefault();
-      transition: all 5s linear 0.5s;
     }
   }
 
   .navModalImage {
-    //여기
     flex: 3.3332;
     height: calc(100vh - 83px);
+    animation: fadein 1s;
+    -webkit-animation: fadein 1s;
 
-    .handHoldingMirror {
+    @keyframes fadein {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    .inModalEachMenuImage {
       width: 100%;
       height: 100%;
     }

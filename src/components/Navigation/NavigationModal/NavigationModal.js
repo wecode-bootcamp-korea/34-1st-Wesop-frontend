@@ -3,8 +3,13 @@ import { Link } from 'react-router-dom';
 import Categories from '../Categories/Categories';
 import './NavigationModal.scss';
 
-const NavigationModal = ({ mockNavMenu, selectedMenu, modalBgColor }) => {
-  // console.log('배열의 인덱스는 0번부터 고유 번호에서 -1' , mockNavMenu[selectedMenu - 1]);
+const NavigationModal = ({
+  mockNavMenu,
+  selectedMenu,
+  modalBgColor,
+  selectedMenuImage,
+}) => {
+  //배열의 인덱스는 0번부터 고유 번호에서 -1' , mockNavMenu[selectedMenu - 1]
 
   return (
     <section
@@ -29,9 +34,9 @@ const NavigationModal = ({ mockNavMenu, selectedMenu, modalBgColor }) => {
       </div>
       <div className="navModalImage">
         <img
-          className="handHoldingMirror"
-          alt="Hand holding small mirror"
-          src="./images/Aesop_Homepage_Navigation_Category_Skin_Desktop_1700x2400px.jpg"
+          className="inModalEachMenuImage"
+          alt="Wesop navigation category"
+          src={selectedMenuImage}
         />
       </div>
     </section>
