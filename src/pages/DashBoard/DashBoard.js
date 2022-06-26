@@ -9,17 +9,13 @@ const DashBoard = props => {
   const [recommendItems, setRecommendItems] = useState([]);
 
   useEffect(() => {
-    fetch('/data/perfumes.json', {
-      method: 'GET',
-    })
+    fetch('/data/perfumes.json')
       .then(res => res.json())
       .then(data => {
         setItems(data);
       });
 
-    fetch('/data/recommends.json', {
-      method: 'GET',
-    })
+    fetch('/data/recommends.json')
       .then(res => res.json())
       .then(data => {
         setRecommendItems(data);
@@ -47,13 +43,13 @@ const DashBoard = props => {
       </div>
       <section>
         <div className="fragranceWrapper">
-          {items.map(list => {
+          {items.map(({ id, img, name, feature_name }) => {
             return (
               <ItemCard
-                key={list.id}
-                itemPhoto={list.img}
-                itemName={list.name}
-                itemDescription={list.feature_name}
+                key={id}
+                itemPhoto={img}
+                itemName={name}
+                itemDescription={feature_name}
               />
             );
           })}
@@ -84,13 +80,13 @@ const DashBoard = props => {
           <h2>탁월한 셀렉션</h2>
         </div>
         <div className="goodChoiceWrapper">
-          {recommendItems.map(recommendList => {
+          {recommendItems.map(({ id, img, name, feature_name }) => {
             return (
               <ItemCard
-                key={recommendList.id}
-                itemPhoto={recommendList.img}
-                itemName={recommendList.name}
-                itemDescription={recommendList.feature_name}
+                key={id}
+                itemPhoto={img}
+                itemName={name}
+                itemDescription={feature_name}
               />
             );
           })}{' '}
