@@ -8,13 +8,13 @@ const Slider = () => {
 
   const moveRight = () => {
     if (move >= -(ITEM_CARD_DATA.length * IMG_WIDTH) + IMG_WIDTH * 3) {
-      setMove(move - IMG_WIDTH);
+      setMove(move => move - IMG_WIDTH);
     }
   };
 
   const moveLeft = () => {
     if (move <= -IMG_WIDTH) {
-      setMove(move + IMG_WIDTH);
+      setMove(move => move + IMG_WIDTH);
     }
   };
 

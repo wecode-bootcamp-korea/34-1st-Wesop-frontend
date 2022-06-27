@@ -10,11 +10,11 @@ const DetailItem = () => {
     fetch('/data/mockDataDetailItem.json')
       .then(response => response.json())
       .then(result => {
-        setDetailItems(result[0]);
+        setDetailItems(result);
         setSelectedItem({
-          id: result[0].size[0].id,
-          image_url: result[0].size[0].image_url,
-          price: result[0].size[0].price,
+          id: result.size[0].id,
+          image_url: result.size[0].image_url,
+          price: result.size[0].price,
         });
       });
   }, []);
@@ -45,13 +45,12 @@ const DetailItem = () => {
               </div>
             </div>
             <div className="categories">
-              {detailItems.sub_description.map(el => {
+              {detailItems.sub_description.map(description => {
                 return (
-                  <SubDescription
-                    key={el.id}
-                    name={el.name}
-                    contents={el.contents}
-                  />
+                  <div className="category" key={description.id}>
+                    <p>{description.name}</p>
+                    <p className="element">{description.contents}</p>
+                  </div>
                 );
               })}
             </div>
@@ -61,7 +60,6 @@ const DetailItem = () => {
                 return (
                   <label key={id}>
                     <input
-                      // name={name}
                       type="radio"
                       checked={selectedItem.id === id}
                       onClick={() => setSelectedItem({ id, image_url, price })}
@@ -103,11 +101,11 @@ const DetailItem = () => {
             <div className="howToUseTitle">사용법</div>
             <div className="howToUseText">{detailItems.additional_content}</div>
             <div className="categories">
-              {detailItems.products_features.map(el => {
+              {detailItems.products_features.map(feature => {
                 return (
-                  <div key={el.id} className="category">
-                    <p>{el.name}</p>
-                    <p className="element">{el.contents}</p>
+                  <div key={feature.id} className="category">
+                    <p>{feature.name}</p>
+                    <p className="element">{feature.contents}</p>
                   </div>
                 );
               })}
@@ -119,14 +117,4 @@ const DetailItem = () => {
     </div>
   );
 };
-
-const SubDescription = ({ name, contents }) => {
-  return (
-    <div className="category">
-      <p>{name}</p>
-      <p className="element">{contents}</p>
-    </div>
-  );
-};
-
 export default DetailItem;
