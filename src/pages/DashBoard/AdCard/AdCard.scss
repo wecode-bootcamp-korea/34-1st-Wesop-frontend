@@ -1,28 +1,23 @@
 .adCard {
-  width: 570.99px;
-  height: 592.08px;
+  width: 570px;
+  height: 592px;
   padding-left: 80px;
 
   .adCardArticle {
-    width: 490.99px;
-    height: 278.09px;
+    width: 490px;
+    height: 278px;
 
     .adCardHeader {
-      width: 490.99px;
-      height: 113.7px;
-
       .adCardTopTitle {
-        width: 490.99px;
-        height: 23.8px;
         margin-bottom: 20px;
         font-size: 14px;
+        line-height: 22px;
       }
 
       .adCardMainTitle {
-        width: 490.99px;
-        height: 39.9px;
         margin-bottom: 30px;
         font-size: 30px;
+        line-height: 40px;
       }
     }
 
