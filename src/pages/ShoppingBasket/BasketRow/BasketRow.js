@@ -12,6 +12,7 @@ const BasketRow = ({ name, size, quantity, price }) => {
           </option>
         ))}
       </select>
+      <button className="info delete">삭제</button>
       <div className="info price">₩ {price}</div>
     </>
   );
