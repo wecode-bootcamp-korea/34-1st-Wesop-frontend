@@ -19,7 +19,7 @@
     width: 80px;
     left: 0;
     top: 40%;
-    margin-left: -80px;
+    // margin-left: -80px;
     opacity: 0;
     transition: all 0.5s ease-in-out;
     z-index: 1;
@@ -29,7 +29,7 @@
     width: 80px;
     right: 0;
     top: 40%;
-    margin-right: -80px;
+    // margin-right: -80px;
     opacity: 0;
     transition: all 0.5s ease-in-out;
     z-index: 1;
@@ -40,18 +40,18 @@
     width: 1200px;
     height: 550px;
     margin: 0 auto;
-    overflow-x: scroll;
+    overflow-x: hidden;
 
-    &::-webkit-scrollbar {
-      height: 3px;
-    }
-    &::-webkit-scrollbar-thumb {
-      height: auto;
-      background-color: #333333;
-    }
-    &::-webkit-scrollbar-track {
-      background-color: #cccbc1;
-    }
+    // &::-webkit-scrollbar {
+    //   height: 3px;
+    // }
+    // &::-webkit-scrollbar-thumb {
+    //   height: auto;
+    //   background-color: #333333;
+    // }
+    // &::-webkit-scrollbar-track {
+    //   background-color: #cccbc1;
+    // }
 
     .carousel {
       display: flex;
@@ -65,7 +65,8 @@
         height: 100%;
 
         .image {
-          height: 350px;
+          width: 389px;
+          height: 400px;
           margin-top: 50px;
         }
         .image:hover ~ .text .recommendedItemName {
@@ -75,7 +76,7 @@
         }
       }
       .recommendTitleBox {
-        width: 480px;
+        width: 389px;
         height: 400px;
         margin-left: 20px;
 

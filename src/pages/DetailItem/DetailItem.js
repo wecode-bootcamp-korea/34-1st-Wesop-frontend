@@ -1,26 +1,25 @@
 import React, { useState, useEffect } from 'react';
-import './DetailItem.scss';
 import Slider from '../../components/Slider/Slider';
+import './DetailItem.scss';
 
 const DetailItem = () => {
-  const [detailItems, setDetailItems] = useState([]);
+  const [detailItems, setDetailItems] = useState({});
+  const [selectedItem, setSelectedItem] = useState();
 
   useEffect(() => {
     fetch('/data/mockDataDetailItem.json')
       .then(response => response.json())
-      .then(result => setDetailItems(result));
+      .then(result => {
+        setDetailItems(result[0]);
+        setSelectedItem({
+          id: result[0].size[0].id,
+          image_url: result[0].size[0].image_url,
+          price: result[0].size[0].price,
+        });
+      });
   }, []);
 
-  const [selectedItem, setSelectedItem] = useState(ITEM_DATA[0]);
-
-  const check = e => {
-    const { name } = e.target;
-    ITEM_DATA.map(item => {
-      if (item.name === name) {
-        return setSelectedItem(item);
-      }
-    });
-  };
+  if (Object.keys(detailItems).length === 0) return <>loading...</>;
 
   return (
     <div className="detailItem">
@@ -30,8 +29,7 @@ const DetailItem = () => {
       <div className="topContainer">
         <div className="logo">Wesop</div>
         <div className="imgBox">
-          {}
-          <img src={selectedItem.img} alt="상품이미지" />
+          <img src={selectedItem.image_url} alt="상품이미지" />
         </div>
         <div className="descriptionBox">
           <div className="itemContainer">
@@ -47,7 +45,7 @@ const DetailItem = () => {
               </div>
             </div>
             <div className="categories">
-              {detailItems[0]?.sub_description.map(el => {
+              {detailItems.sub_description.map(el => {
                 return (
                   <SubDescription
                     key={el.id}
@@ -59,16 +57,16 @@ const DetailItem = () => {
             </div>
             <div className="sizeBox">
               <p>사이즈</p>
-              {ITEM_DATA.map(({ name, size }) => {
+              {detailItems.size.map(({ id, name, image_url, price }) => {
                 return (
-                  <label key={name}>
+                  <label key={id}>
                     <input
-                      name={name}
+                      // name={name}
                       type="radio"
-                      checked={selectedItem.name === name}
-                      onClick={check}
+                      checked={selectedItem.id === id}
+                      onClick={() => setSelectedItem({ id, image_url, price })}
                     />
-                    {size}
+                    {name}
                   </label>
                 );
               })}
@@ -98,18 +96,19 @@ const DetailItem = () => {
       </div>
       <div className="howToUseContainer">
         <div className="itemImage">
-          <p>{detailItems[0]?.image}</p>
+          <p>{detailItems.image}</p>
         </div>
         <div className="howToUseBox">
           <div className="howToUseWrapper">
             <div className="howToUseTitle">사용법</div>
-            <div className="howToUseText">
-              {detailItems[0]?.additional_content}
-            </div>
+            <div className="howToUseText">{detailItems.additional_content}</div>
             <div className="categories">
-              {detailItems[0]?.products_features.map(el => {
+              {detailItems.products_features.map(el => {
                 return (
-                  <HowToUse key={el.id} name={el.name} contents={el.contents} />
+                  <div key={el.id} className="category">
+                    <p>{el.name}</p>
+                    <p className="element">{el.contents}</p>
+                  </div>
                 );
               })}
             </div>
@@ -117,15 +116,6 @@ const DetailItem = () => {
         </div>
       </div>
       <Slider />
-    </div>
-  );
-};
-
-const HowToUse = ({ name, contents }) => {
-  return (
-    <div className="category">
-      <p>{name}</p>
-      <p className="element">{contents}</p>
     </div>
   );
 };
@@ -138,22 +128,5 @@ const SubDescription = ({ name, contents }) => {
     </div>
   );
 };
-
-const ITEM_DATA = [
-  {
-    id: 1,
-    name: 'small',
-    size: '100mL',
-    price: '₩ 45,000',
-    img: '/images/Large-PNG-Aesop-Skin-Parsley-Seed-Anti-Oxidant-Facial-Toner-100mL-medium.png',
-  },
-  {
-    id: 2,
-    name: 'large',
-    size: '200mL',
-    price: '₩ 73,000',
-    img: '/images/Aesop-Skin-Parsley-Seed-Anti-Oxidant-Facial-Toner-200mL-large.webp',
-  },
-];
 
 export default DetailItem;
