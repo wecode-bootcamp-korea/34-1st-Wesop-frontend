@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import BasketRow from '../BasketRow/BasketRow';
 import './BasketGrid.scss';
 
-const BasketGrid = ({ shoppingBasketItems }) => (
+const BasketGrid = ({ shoppingBasketItems, onChangeQuantity }) => (
   <section className="basketGrid">
     <div className="wrapperTitle">
       <div className="title name">카트</div>
@@ -16,7 +16,9 @@ const BasketGrid = ({ shoppingBasketItems }) => (
       </div>
     </div>
     {shoppingBasketItems.length > 0 &&
-      shoppingBasketItems.map(el => <BasketRow key={el.id} {...el} />)}
+      shoppingBasketItems.map(el => (
+        <BasketRow key={el.id} {...el} onChangeQuantity={onChangeQuantity} />
+      ))}
   </section>
 );
 

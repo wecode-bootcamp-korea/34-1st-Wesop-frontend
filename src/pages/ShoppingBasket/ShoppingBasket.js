@@ -33,11 +33,21 @@ const ShoppingBasket = ({ show, setShoppingBasketShow }) => {
     ]);
   }, []);
 
-  // if (!show) return;
+  const handleChangeQuantity = (id, quantity) => {
+    setShoppingBasketItems(preItems => {
+      return preItems.map(preItem => {
+        if (preItem.id === id) preItem.quantity = quantity;
+        return preItem;
+      });
+    });
+  };
 
   return (
     <div className="shoppingBasket">
-      <BasketGrid shoppingBasketItems={shoppingBasketItems} />
+      <BasketGrid
+        shoppingBasketItems={shoppingBasketItems}
+        onChangeQuantity={handleChangeQuantity}
+      />
       <div className="wrapperPayment">
         <p className="description">전 제품 무료 배송 혜택을 즐겨보세요</p>
         <div className="wrapperAmount">

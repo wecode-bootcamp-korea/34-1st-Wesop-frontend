@@ -1,7 +1,10 @@
 import React from 'react';
 import './BasketRow.scss';
 
-const BasketRow = ({ id, name, size, quantity, price }) => {
+const BasketRow = ({ id, name, size, quantity, price, onChangeQuantity }) => {
+  const handleChangeQuantity = ({ target: { value } }) => {
+    onChangeQuantity(id, parseInt(value));
+  };
   return (
     <div className="basketRow">
       <div className="col name">{name}</div>
@@ -10,7 +13,7 @@ const BasketRow = ({ id, name, size, quantity, price }) => {
         <select
           className="select"
           defaultValue={quantity}
-          onChange={e => console.log(e.target.value)}
+          onChange={handleChangeQuantity}
         >
           {[1, 2, 3, 4, 5].map(el => (
             <option key={el} value={el}>
