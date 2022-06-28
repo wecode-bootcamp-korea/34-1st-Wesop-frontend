@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass, faXmark } from '@fortawesome/free-solid-svg-icons';
 import NavigationModal from './NavigationModal/NavigationModal';
-import LoginModal from './Login/LoginModal';
+// import LoginModal from './Login/LoginModal';
 import './Navigation.scss';
 
 const Navigation = props => {
@@ -15,21 +15,6 @@ const Navigation = props => {
 
   //사용자가 클릭한 메뉴의 고유 번호 : selectedMenu
   const [selectedMenu, setSelectedMenu] = useState(0);
-
-  const [selectedMenuBgColor, setSelectedMenuBgColor] = useState('#fffef2');
-
-  const backgroundColorChange = selectedMenu => {
-    setSelectedMenuBgColor(
-      MODAL_BG_COLORS_AND_IMAGES[selectedMenu - 1].backgroundColor
-    );
-  };
-
-  const [selectedMenuImage, setSelectedMenuImage] =
-    useState('./images/skincare');
-
-  const modalImageChange = selectedMenu => {
-    setSelectedMenuImage(MODAL_BG_COLORS_AND_IMAGES[selectedMenu - 1].image);
-  };
 
   const [activeAnimation, setActiveAnimation] = useState('');
 
@@ -53,8 +38,6 @@ const Navigation = props => {
   const handlingNavigation = id => {
     setSelectedMenu(id);
     modalChange(true);
-    backgroundColorChange(id);
-    modalImageChange(id);
     activeAnimationModal(true);
   };
 
@@ -62,37 +45,49 @@ const Navigation = props => {
     fetch('/data/categories.json')
       .then(res => res.json())
       .then(data => {
-        setMockNavMenu(data);
+        setMockNavMenu(data.results);
       });
   }, []);
+
+  // useEffect(() => {
+  //   fetch('http://10.58.6.17:8000/product/categories', { method: 'GET' })
+  //     .then(res => res.json())
+  //     .then(data => {
+  //       setMockNavMenu(data.results);
+  //     });
+  // }, []);
 
   return (
     <>
       <nav className={`navBox ${selectedMenu !== 0 && 'white'}`}>
         <ul className="navPrimaryMenu">
           <li className="navPrimaryMenuItem">
-            <Link to="/" className="wesopLogo">
+            <Link
+              to="/"
+              className="wesopLogo"
+              onClick={navClosingButtonControl}
+            >
               Wēsop
             </Link>
           </li>
-          {mockNavMenu.map(({ id, name }) => {
+          {mockNavMenu.map(({ main_category_id, main_category }) => {
             return (
               <li
                 className={`navPrimaryMenuItem ${
-                  selectedMenu === id && 'highlight'
+                  selectedMenu === main_category_id && 'highlight'
                 }`}
-                key={id}
+                key={main_category_id}
               >
                 <button
                   className="navMenuLink"
                   onClick={() => {
-                    handlingNavigation(id);
+                    handlingNavigation(main_category_id);
                   }}
                   onMouseLeave={() => {
                     setActiveAnimation('');
                   }}
                 >
-                  {name}
+                  {main_category}
                 </button>
               </li>
             );
@@ -143,59 +138,15 @@ const Navigation = props => {
         <NavigationModal
           mockNavMenu={mockNavMenu}
           selectedMenu={selectedMenu}
-          modalBgColor={selectedMenuBgColor}
-          selectedMenuImage={selectedMenuImage}
           activeAnimation={activeAnimation}
+          modalChange={modalChange}
         />
       )}
-      {loginIsOpen && (
+      {/* {loginIsOpen && (
         <LoginModal loginIsOpen={loginIsOpen} setLoginIsOpen={setLoginIsOpen} />
-      )}
+      )} */}
     </>
   );
 };
-
-const MODAL_BG_COLORS_AND_IMAGES = [
-  {
-    id: 1,
-    backgroundColor: '#f1efe0',
-    image: './images/skincare.jpg',
-  },
-  {
-    id: 2,
-    backgroundColor: '#ece3d2',
-    image: './images/bodyhand.jpg',
-  },
-  {
-    id: 3,
-    backgroundColor: '#ddd8d4',
-    image: './images/hair2.jpg',
-  },
-  {
-    id: 4,
-    backgroundColor: '#f5ece3',
-    image: './images/perfume.jpg',
-  },
-  {
-    id: 5,
-    backgroundColor: '#f6f1eb',
-    image: './images/home.jpg',
-  },
-  {
-    id: 6,
-    backgroundColor: '#e9efe3',
-    image: './images/travel.jpg',
-  },
-  {
-    id: 7,
-    backgroundColor: '#eaeade',
-    image: './images/giftguide.jpg',
-  },
-  {
-    id: 8,
-    backgroundColor: '#fefef2',
-    image: './images/read.jpg',
-  },
-];
 
 export default Navigation;

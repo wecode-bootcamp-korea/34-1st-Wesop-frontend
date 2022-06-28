@@ -40,6 +40,10 @@
       margin-right: 14px;
       height: 80px;
 
+      &.highlight {
+        border-bottom: 2px solid #333;
+      }
+
       .wesopLogo {
         @include navButtonColor;
         @include wesopLogoFont;
@@ -70,10 +74,6 @@
           font-size: 14px;
         }
       }
-    }
-
-    .navPrimaryMenuItem.highlight {
-      border-bottom: 2px solid #333;
     }
   }
 
