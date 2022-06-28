@@ -30,6 +30,10 @@
     .price {
       flex: 1.5;
       text-align: end;
+
+      .close {
+        cursor: pointer;
+      }
     }
   }
 }

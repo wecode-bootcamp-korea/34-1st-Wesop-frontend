@@ -8,6 +8,7 @@ const BasketGrid = ({
   shoppingBasketItems,
   onChangeQuantity,
   onDeleteItem,
+  onCloseShoppingBasket,
 }) => (
   <section className="basketGrid">
     <div className="wrapperTitle">
@@ -16,7 +17,11 @@ const BasketGrid = ({
       <div className="title quantities">수량</div>
       <div className="title delete" />
       <div className="title price">
-        <FontAwesomeIcon icon={faX} />
+        <FontAwesomeIcon
+          className="close"
+          icon={faX}
+          onClick={onCloseShoppingBasket}
+        />
       </div>
     </div>
     {shoppingBasketItems.length > 0 &&

@@ -5,9 +5,8 @@ import './ShoppingBasket.scss';
 const ShoppingBasket = ({ show, setShoppingBasketShow }) => {
   const [shoppingBasketItems, setShoppingBasketItems] = useState([]);
   useEffect(() => {
-    document.body.style.overflow = show ? 'hidden' : 'auto';
-    // document.body.style.overflow = 'hidden';
-  }, [show]);
+    document.body.style.overflow = 'hidden';
+  }, []);
 
   useEffect(() => {
     // const localItems = JSON.parse(localStorage.getItem('shoppingBasketItems'));
@@ -48,12 +47,17 @@ const ShoppingBasket = ({ show, setShoppingBasketShow }) => {
     });
   };
 
+  const handleCloseShoppingBasket = () => {
+    setShoppingBasketShow(false);
+  };
+
   return (
     <div className="shoppingBasket">
       <BasketGrid
         shoppingBasketItems={shoppingBasketItems}
         onChangeQuantity={handleChangeQuantity}
         onDeleteItem={handleDeleteItem}
+        onCloseShoppingBasket={handleCloseShoppingBasket}
       />
       <div className="wrapperPayment">
         <p className="description">전 제품 무료 배송 혜택을 즐겨보세요</p>

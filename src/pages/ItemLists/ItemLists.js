@@ -17,9 +17,7 @@ const ItemLists = ({ setShoppingBasketShow }) => {
 
   return (
     <div className="itemLists">
-      <nav style={{ backgroundColor: 'black', height: '80px' }}>
-        <ShoppingCart setShoppingBasketShow={setShoppingBasketShow} />
-      </nav>
+      <nav style={{ backgroundColor: 'black', height: '80px' }} />
       <main className="main">
         <section className="wrapperTitle">
           <h1 className="logo">Wesop</h1>
