@@ -6,12 +6,6 @@
   padding: 40px;
   transition: height 0.3s;
 
-  .list {
-    display: grid;
-    grid-template-columns: 3.7fr 2.3fr 1.5fr 40px 1.5fr;
-    color: white;
-  }
-
   .wrapperPayment {
     display: flex;
     flex-direction: column;

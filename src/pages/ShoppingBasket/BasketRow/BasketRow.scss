@@ -1,31 +1,79 @@
-.title {
-  padding-bottom: 25px;
-  border-bottom: 2px solid #3b3b3a;
-  color: #bcbbb4;
-  font-size: 15px;
-}
-
-.quantities {
-  background-color: inherit;
-  border: 0;
-}
-
-.delete {
-  background-color: inherit;
-  border: 0;
-  cursor: pointer;
-}
-
-.info {
+.basketRow {
+  display: flex;
+  width: 100%;
   padding: 25px 0;
-  border-bottom: 1px solid #3b3b3a;
-  color: #fffef2;
+  border-bottom: 2px solid #3b3b3a;
+  font-size: 18px;
+
+  .name {
+    flex: 4;
+  }
+
+  .size {
+    flex: 2;
+  }
+
+  .quantities {
+    width: 100px;
+
+    .select {
+      color: #bcbbb4;
+      font-size: 18px;
+      border: 0;
+      background-color: inherit;
+      width: 100px;
+    }
+  }
+
+  .delete {
+    width: 50px;
+    cursor: pointer;
+    border: 0;
+    background-color: inherit;
+    color: #bcbbb4;
+    font-size: 15px;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .price {
+    flex: 1.5;
+    text-align: end;
+  }
+
+  &:hover .delete {
+    opacity: 1;
+  }
 }
 
-.size {
-  color: #bcbbb4;
-}
+// .title {
+//   padding-bottom: 25px;
+//   border-bottom: 2px solid #3b3b3a;
+//   color: #bcbbb4;
+//
+// }
 
-.price {
-  text-align: end;
-}
+// .quantities {
+//   background-color: inherit;
+//   border: 0;
+// }
+
+// .delete {
+//   background-color: inherit;
+//   border: 0;
+//   cursor: pointer;
+// }
+
+// .info {
+//   padding: 25px 0;
+//   border-bottom: 1px solid #3b3b3a;
+//   color: #fffef2;
+// }
+
+// .size {
+//   color: #bcbbb4;
+// }
+
+// .price {
+//   text-align: end;
+// }

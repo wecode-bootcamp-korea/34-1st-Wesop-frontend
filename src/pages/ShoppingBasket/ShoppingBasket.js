@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import BasketGrid from './BasketGrid/BasketGrid';
-
 import './ShoppingBasket.scss';
 
 const ShoppingBasket = ({ show, setShoppingBasketShow }) => {
@@ -39,12 +38,17 @@ const ShoppingBasket = ({ show, setShoppingBasketShow }) => {
   return (
     <div className="shoppingBasket">
       <BasketGrid shoppingBasketItems={shoppingBasketItems} />
-
       <div className="wrapperPayment">
         <p className="description">전 제품 무료 배송 혜택을 즐겨보세요</p>
         <div className="wrapperAmount">
           <span className="title">소계(세금 포함)</span>
-          <span className="amount">₩ 20,000</span>
+          <span className="amount">
+            ₩{' '}
+            {shoppingBasketItems
+              .reduce((a, b) => a + b.price * b.quantity, 0)
+              .toString()
+              .replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ',')}
+          </span>
         </div>
         <button className="payment">결제하기</button>
       </div>
