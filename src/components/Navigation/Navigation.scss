@@ -90,17 +90,7 @@
         margin-right: 0;
       }
 
-      .loginButton {
-        @include navButtonColor;
-        @include navSecondMenuButton();
-      }
-
-      .signUpButton {
-        @include navButtonColor;
-        @include navSecondMenuButton();
-      }
-
-      .cartButton {
+      .navSecondMenuButton {
         @include navButtonColor;
         @include navSecondMenuButton();
       }

@@ -11,7 +11,6 @@ const NavigationModal = ({
   activeAnimation,
 }) => {
   //배열의 인덱스는 0번부터 고유 번호에서 -1' , mockNavMenu[selectedMenu - 1]
-
   return (
     <section
       className="navigationModal"

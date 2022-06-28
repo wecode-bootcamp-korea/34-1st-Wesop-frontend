@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass, faXmark } from '@fortawesome/free-solid-svg-icons';
 import NavigationModal from './NavigationModal/NavigationModal';
+import LoginModal from './Login/LoginModal';
 import './Navigation.scss';
 
 const Navigation = props => {
@@ -10,13 +11,10 @@ const Navigation = props => {
 
   const [navClosingBtn, setNavClosingBtn] = useState(false);
 
+  const [loginIsOpen, setLoginIsOpen] = useState(false);
+
   //사용자가 클릭한 메뉴의 고유 번호 : selectedMenu
   const [selectedMenu, setSelectedMenu] = useState(0);
-
-  //사용자가 클릭한 메뉴에 해당되는 객체 불러오기 : mockSelectedMenu
-  const [mockSelectedMenu, setMockSelectedMenu] = useState(
-    mockNavMenu[Number(selectedMenu)]
-  );
 
   const [selectedMenuBgColor, setSelectedMenuBgColor] = useState('#fffef2');
 
@@ -43,14 +41,21 @@ const Navigation = props => {
     setNavClosingBtn(modal);
   };
 
-  const modalReturnToOrigin = modal => {
+  const modalReturnToOrigin = () => {
     setSelectedMenu(0);
-    setNavClosingBtn(modal);
   };
 
   const navClosingButtonControl = () => {
-    modalChange();
+    modalChange(false);
     modalReturnToOrigin();
+  };
+
+  const handlingNavigation = id => {
+    setSelectedMenu(id);
+    modalChange(true);
+    backgroundColorChange(id);
+    modalImageChange(id);
+    activeAnimationModal(true);
   };
 
   useEffect(() => {
@@ -81,12 +86,7 @@ const Navigation = props => {
                 <button
                   className="navMenuLink"
                   onClick={() => {
-                    setSelectedMenu(id);
-                    modalChange(true);
-                    setMockSelectedMenu(id);
-                    backgroundColorChange(id);
-                    modalImageChange(id);
-                    activeAnimationModal(true);
+                    handlingNavigation(id);
                   }}
                   onMouseLeave={() => {
                     setActiveAnimation('');
@@ -122,13 +122,20 @@ const Navigation = props => {
         </ul>
         <ul className="navSecondMenu">
           <li className="navSecondMenuItem">
-            <button className="loginButton">로그인</button>
+            <button
+              className="navSecondMenuButton"
+              onClick={() => {
+                setLoginIsOpen(true);
+              }}
+            >
+              로그인
+            </button>
           </li>
           <li className="navSecondMenuItem">
-            <button className="signUpButton">회원가입</button>
+            <button className="navSecondMenuButton">회원가입</button>
           </li>
           <li className="navSecondMenuItem">
-            <button className="cartButton">카트</button>
+            <button className="navSecondMenuButton">카트</button>
           </li>
         </ul>
       </nav>
@@ -136,11 +143,13 @@ const Navigation = props => {
         <NavigationModal
           mockNavMenu={mockNavMenu}
           selectedMenu={selectedMenu}
-          mockSelectedMenu={mockSelectedMenu}
           modalBgColor={selectedMenuBgColor}
           selectedMenuImage={selectedMenuImage}
           activeAnimation={activeAnimation}
         />
+      )}
+      {loginIsOpen && (
+        <LoginModal loginIsOpen={loginIsOpen} setLoginIsOpen={setLoginIsOpen} />
       )}
     </>
   );
