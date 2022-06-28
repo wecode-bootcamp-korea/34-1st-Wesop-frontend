@@ -42,11 +42,18 @@ const ShoppingBasket = ({ show, setShoppingBasketShow }) => {
     });
   };
 
+  const handleDeleteItem = id => {
+    setShoppingBasketItems(preItems => {
+      return preItems.filter(preItem => preItem.id !== id);
+    });
+  };
+
   return (
     <div className="shoppingBasket">
       <BasketGrid
         shoppingBasketItems={shoppingBasketItems}
         onChangeQuantity={handleChangeQuantity}
+        onDeleteItem={handleDeleteItem}
       />
       <div className="wrapperPayment">
         <p className="description">전 제품 무료 배송 혜택을 즐겨보세요</p>

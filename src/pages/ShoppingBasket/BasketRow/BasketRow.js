@@ -1,10 +1,23 @@
 import React from 'react';
 import './BasketRow.scss';
 
-const BasketRow = ({ id, name, size, quantity, price, onChangeQuantity }) => {
+const BasketRow = ({
+  id,
+  name,
+  size,
+  quantity,
+  price,
+  onChangeQuantity,
+  onDeleteItem,
+}) => {
   const handleChangeQuantity = ({ target: { value } }) => {
     onChangeQuantity(id, parseInt(value));
   };
+
+  const handleDeleteItem = () => {
+    onDeleteItem(id);
+  };
+
   return (
     <div className="basketRow">
       <div className="col name">{name}</div>
@@ -22,7 +35,9 @@ const BasketRow = ({ id, name, size, quantity, price, onChangeQuantity }) => {
           ))}
         </select>
       </div>
-      <button className="col delete">삭제</button>
+      <button className="col delete" onClick={handleDeleteItem}>
+        삭제
+      </button>
       <div className="col price">
         ₩{' '}
         {(price * quantity)
