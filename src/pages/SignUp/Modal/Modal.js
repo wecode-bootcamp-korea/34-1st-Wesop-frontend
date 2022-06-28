@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const Modal = ({ modal, setModal }) => {
   const [emailErrorMessage, setEmailErrorMessage] = useState('');
@@ -6,43 +6,70 @@ const Modal = ({ modal, setModal }) => {
   const [userInfo, setUserInfo] = useState({
     id: '',
     pw: '',
-    firstName: '',
     lastName: '',
+    fisrtName: '',
   });
-  const { id, pw, firstName, lastName } = userInfo;
+  const [disabled, setDisabled] = useState(false);
+  const { id, pw, lastName, firstName } = userInfo;
 
   const getUserInfo = e => {
     const { name, value } = e.target;
     setUserInfo({ ...userInfo, [name]: value });
+    console.log(userInfo);
   };
 
   const isValid = () => {
-    id.includes('@' && '.com') || id === ''
-      ? setEmailErrorMessage('')
-      : setEmailErrorMessage(
-          '이메일 주소 형식에 맞지 않습니다. 다시 확인해주세요. (예: name@example.com)'
-        );
+    // id.includes('@' && '.com') || id === ''
+    //   ? setEmailErrorMessage('')
+    //   : setEmailErrorMessage(
+    //       '이메일 주소 형식에 맞지 않습니다. 다시 확인해주세요. (예: name@example.com)'
+    //     );
+    if (id.includes('@' && '.com')) {
+      setEmailErrorMessage('');
+    } else {
+      setEmailErrorMessage(
+        '이메일 주소 형식에 맞지 않습니다. 다시 확인해주세요. (예: name@example.com)'
+      );
+      setDisabled(true);
+    }
   };
 
   const isSame = () => {
     let password = document.querySelector('#pw').value;
-    pw === password || pw === ''
-      ? setPasswordErrorMessage('')
-      : setPasswordErrorMessage('이전에 사용했던 패스워드를 입력하세요.');
+    // pw === password || pw === ''
+    //   ? setPasswordErrorMessage('')
+    //   : setPasswordErrorMessage('이전에 사용했던 패스워드를 입력하세요.');
+    if (pw === password || pw === '') {
+      setEmailErrorMessage('');
+    } else {
+      setPasswordErrorMessage('이전에 사용했던 패스워드를 입력하세요.');
+      setDisabled(true);
+    }
   };
 
-  const SignUp = () => {
-    fetch('http://10.58.7.17:8000/users/signup', {
+  const disableButton = () => {
+    if (lastName === '' || firstName === '') {
+      setDisabled(true);
+    }
+  };
+
+  const signUp = () => {
+    fetch('http://10.58.3.48:8000/users/signup', {
       method: 'POST',
       body: JSON.stringify({
         email: id,
         password: pw,
-        first_name: firstName,
         last_name: lastName,
+        first_name: firstName,
       }),
     })
       .then(response => response.json())
-      .then(result => console.log('결과: ', result));
+      .then(result => {
+        if (result.message === 'SUCCESS') {
+          alert('회원가입이 완료되었습니다.');
+          setModal(false);
+        }
+      });
   };
 
   return (
@@ -68,7 +95,8 @@ const Modal = ({ modal, setModal }) => {
             type="text"
             placeholder="이메일 주소"
             onChange={getUserInfo}
-            onFocusOut={isValid}
+            onKeyUp={isValid}
+            // onKeyOut={isValid}
           />
           <p className="errorMessage">{emailErrorMessage}</p>
           <input id="pw" type="password" placeholder="패스워드" />
@@ -83,16 +111,20 @@ const Modal = ({ modal, setModal }) => {
 
           <div>
             <input
-              name="firstName"
-              type="text"
-              placeholder="성"
-              className="firstName"
-            />
-            <input
               name="lastName"
               type="text"
+              placeholder="성"
+              onChange={getUserInfo}
+              onKeyUp={disableButton}
+              className="lasttName"
+            />
+            <input
+              name="firstName"
+              type="text"
               placeholder="이름"
-              className="lastName"
+              onChange={getUserInfo}
+              onKeyUp={disableButton}
+              className="firstName"
             />
           </div>
         </form>
@@ -106,7 +138,9 @@ const Modal = ({ modal, setModal }) => {
             <span>이용 약관에 동의합니다.</span>
           </div>
         </div>
-        <button className="signUpButton">등록</button>
+        <button className="signUpButton" onClick={signUp} disabled={disabled}>
+          등록
+        </button>
         <div className="haveAccountBox">
           <button className="haveAccount">이솝 계정을 가지고 계십니까?</button>
         </div>
