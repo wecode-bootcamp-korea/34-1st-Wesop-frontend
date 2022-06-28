@@ -12,7 +12,6 @@ const Layout = ({ children }) => {
           setShoppingBasketShow={setShoppingBasketShow}
         />
       )}
-      <ShoppingCart setShoppingBasketShow={setShoppingBasketShow} />
       {children}
     </>
   );
