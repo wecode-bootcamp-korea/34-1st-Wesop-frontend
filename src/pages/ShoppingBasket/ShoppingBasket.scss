@@ -1,36 +1,14 @@
-// .shoppingBasket {
-//   position: relative;
-//   width: 100vw;
-//   height: 150px;
-//   background-color: rgba(0, 0, 0, 0.7);
-
-//   .list {
-//     position: absolute;
-//     top: 0;
-//     left: 0;
-//     height: 80vh;
-//     width: 100vw;
-//   }
-
-//   .black {
-//     position: absolute;
-//     height: 20vh;
-//     width: 100vw;
-//     bottom: -20vh;
-//     left: 0;
-//     z-index: 2;
-//   }
-// }
-
 .shoppingBasket {
   width: 100vw;
   max-height: 100vh;
   overflow-y: scroll;
   background-color: #252525;
   padding: 40px;
+  transition: height 0.3s;
+
   .list {
     display: grid;
-    grid-template-columns: 3.7fr 2.3fr 2fr 1fr;
+    grid-template-columns: 3.7fr 2.3fr 1.5fr 40px 1.5fr;
     color: white;
   }
 

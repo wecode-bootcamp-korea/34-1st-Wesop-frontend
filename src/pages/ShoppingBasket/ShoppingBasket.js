@@ -1,7 +1,6 @@
-import { faX } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useEffect, useState } from 'react';
-import BasketRow from './BasketRowz/BasketRow';
+import BasketGrid from './BasketGrid/BasketGrid';
+
 import './ShoppingBasket.scss';
 
 const ShoppingBasket = ({ show, setShoppingBasketShow }) => {
@@ -12,25 +11,35 @@ const ShoppingBasket = ({ show, setShoppingBasketShow }) => {
   }, [show]);
 
   useEffect(() => {
-    const localItems = JSON.parse(localStorage.getItem('shoppingBasketItems'));
-    if (!localItems || localItems.length === 0) return;
-    setShoppingBasketItems(localItems);
+    // const localItems = JSON.parse(localStorage.getItem('shoppingBasketItems'));
+    // if (!localItems || localItems.length === 0) return;
+    // setShoppingBasketItems(localItems);
+    setShoppingBasketItems([
+      { id: 1, name: '샴푸', size: '100 ml', quantity: 2, price: 10000 },
+      {
+        id: 2,
+        name: '레저렉션 아로마틱 핸드워시',
+        size: '100 ml',
+        quantity: 5,
+        price: 10000,
+      },
+      {
+        id: 3,
+        name: '에이 로즈 바이 애니 아더 네임 바디 클렌저',
+        size: '100 ml',
+        quantity: 1,
+        price: 20000,
+      },
+      { id: 4, name: '브레스리스', size: '500 ml', quantity: 3, price: 39000 },
+    ]);
   }, []);
 
   // if (!show) return;
 
   return (
     <div className="shoppingBasket">
-      <div className="list">
-        <div className="title">카트</div>
-        <div className="title">사이즈</div>
-        <div className="title">수량</div>
-        <div className="title price">
-          <FontAwesomeIcon icon={faX} />
-        </div>
-        {shoppingBasketItems.length > 0 &&
-          shoppingBasketItems.map(el => <BasketRow key={el.id} {...el} />)}
-      </div>
+      <BasketGrid shoppingBasketItems={shoppingBasketItems} />
+
       <div className="wrapperPayment">
         <p className="description">전 제품 무료 배송 혜택을 즐겨보세요</p>
         <div className="wrapperAmount">
