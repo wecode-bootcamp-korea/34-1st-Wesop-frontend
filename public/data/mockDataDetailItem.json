@@ -1,39 +1,92 @@
 {
-  "id": 1,
-  "name": "파슬리 씨드 안티 옥시던트 페이셜 토너",
-  "contents": "피부 진정과 수분 공급을 위한 부드러운 토너",
-  "sub_description": [
-    { "id": 1, "name": "피부 타입", "contents": "모든 피부" },
-    { "id": 2, "name": "사용감", "contents": "진정된, 부드러운, 가벼운" },
-    {
-      "id": 3,
-      "name": "주요 성분",
-      "contents": "파슬리  씨드, 라벤더, 마트리카리아꽃오일"
-    }
-  ],
-  "size": [
-    {
-      "id": 1,
-      "name": "100mL",
-      "image_url": "/images/Large-PNG-Aesop-Skin-Parsley-Seed-Anti-Oxidant-Facial-Toner-100mL-medium.png",
-      "price": "₩ 45,000"
-    },
-    {
-      "id": 2,
-      "name": "200mL",
-      "image_url": "images/Aesop-Skin-Parsley-Seed-Anti-Oxidant-Facial-Toner-200mL-large.webp",
-      "price": "₩ 73,000"
-    }
-  ],
-  "image": "이미지 주소",
-  "additional_content": "클렌징 후 화장솜이나 손에 덜어내어 세안을 마친 얼굴과 목에 두드리세요",
-  "products_features": [
-    { "id": 1, "name": "사용량", "contents": "반 티스푼" },
-    { "id": 2, "name": "텍스처", "contents": "워터 제형" },
-    {
-      "id": 3,
-      "name": "향",
-      "contents": "플로럴, 허브향"
-    }
-  ]
+  "product": {
+    "additional_content": "젖은 화장솜에 덜어 눈 주위에 지긋이 눌러 아이 메이크업 제품이 용해될 때까지 기다렸다 닦아냅니다. 여러 번 닦아내줍니다.",
+    "additional_image_url": "https://images.unsplash.com/photo-1522918279596-eb92d4d75259?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
+    "additional_name": "사용법",
+    "category": "클렌저",
+    "content": "눈 주위의 민감한 피부를 달래고 진정시켜주는 마트리카리아가 포함된 부드러운 오일 제형의 아이 메이크업 리무브",
+    "features": [
+      {
+        "feature": [
+          {
+            "content": "모든 피부, 메이크업을 한 피부",
+            "feature": "피부타입"
+          },
+          {
+            "content": "진정된, 생기있는",
+            "feature": "사용감"
+          },
+          {
+            "content": "그레이프 씨드, 토코페롤, 마트리카리아꽃오일(블루 카모마일)",
+            "feature": "주요 성분"
+          }
+        ],
+        "manual": [
+          {
+            "content": "5-7방울",
+            "feature": "사용량"
+          },
+          {
+            "content": "가벼운, 오일 타입",
+            "feature": "텍스처"
+          },
+          {
+            "content": "허브향, 플로랄, 너티",
+            "feature": "향"
+          }
+        ]
+      }
+    ],
+    "id": 1,
+    "main_category": "스킨 케어",
+    "name": "리무브",
+    "product_option": [
+      {
+        "content": "",
+        "id": 1,
+        "image_url": "https://velog.velcdn.com/images/jiminnote/post/fafd5ab2-3260-49e9-99c5-85a4bda2bfad/image.png",
+        "is_include_pump": false,
+        "price": "27000.000",
+        "sizes_mL": "60"
+      }
+    ],
+    "recommend": [
+      {
+        "name": "리무브",
+        "product_content": "모든 피부, 메이크업을 한 피부",
+        "product_id": 1,
+        "product_image_url": "https://velog.velcdn.com/images/jiminnote/post/fafd5ab2-3260-49e9-99c5-85a4bda2bfad/image.png"
+      },
+      {
+        "name": "파슬리 씨드 페이셜 클렌징 오일",
+        "product_content": "중성, 복합성, 건성, 민감성 피부",
+        "product_id": 2,
+        "product_image_url": "https://velog.velcdn.com/images/jiminnote/post/bbd76163-e54d-4e31-9cb4-babe7ba57c0b/image.png"
+      },
+      {
+        "name": "파슬리 씨드 안티 옥시던트 페이셜 토너",
+        "product_content": "모든 피부",
+        "product_id": 3,
+        "product_image_url": "https://velog.velcdn.com/images/jiminnote/post/5d583c81-86a2-4d42-9a47-8904e44270eb/image.png"
+      },
+      {
+        "name": "비터 오렌지 아스트린젠트 토너",
+        "product_content": "대부분의 피부 타입, 지성, 문제성 피부",
+        "product_id": 4,
+        "product_image_url": "https://velog.velcdn.com/images/jiminnote/post/5d583c81-86a2-4d42-9a47-8904e44270eb/image.png"
+      },
+      {
+        "name": "파슬리 씨드 안티 옥시던트 아이 세럼",
+        "product_content": "모든 피부, 지성, 복합성 피부",
+        "product_id": 5,
+        "product_image_url": "https://velog.velcdn.com/images/jiminnote/post/5d583c81-86a2-4d42-9a47-8904e44270eb/image.png"
+      },
+      {
+        "name": "파슬리 씨드 옥시던트 아이 크림",
+        "product_content": "모든 피부, 건성 피부",
+        "product_id": 6,
+        "product_image_url": "https://velog.velcdn.com/images/jiminnote/post/bd9c07fa-ca23-4822-95db-d2a33588239f/image.png"
+      }
+    ]
+  }
 }

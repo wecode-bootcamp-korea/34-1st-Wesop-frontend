@@ -3,23 +3,25 @@ import Slider from '../../components/Slider/Slider';
 import './DetailItem.scss';
 
 const DetailItem = () => {
-  const [detailItems, setDetailItems] = useState({});
-  const [selectedItem, setSelectedItem] = useState();
+  const [detailItems, setDetailItems] = useState();
+  const [selectedItem, setSelectedItem] = useState({});
 
   useEffect(() => {
     fetch('/data/mockDataDetailItem.json')
       .then(response => response.json())
       .then(result => {
+        console.log(result);
         setDetailItems(result);
         setSelectedItem({
-          id: result.size[0].id,
-          image_url: result.size[0].image_url,
-          price: result.size[0].price,
+          id: result.product.product_option[0].id,
+          image_url: result.product.product_option[0].image_url,
+          price: result.product.product_option[0].price,
+          size_mL: result.product.product_option[0].size_mL,
         });
       });
   }, []);
-
-  if (Object.keys(detailItems).length === 0) return <>loading...</>;
+  if (!detailItems) return <>loading...</>;
+  // if (Object.keys(detailItems).length === 0) return <>loading...</>;
 
   return (
     <div className="detailItem">
@@ -39,35 +41,37 @@ const DetailItem = () => {
               <span>클렌저</span>
             </div>
             <div className="titleBox">
-              <div className="title">파슬리 씨드 안티 옥시던트 페이셜 토너</div>
-              <div className="description">
-                피부 진정과 수분 공급을 위한 부드러운 토너
-              </div>
+              <div className="title">{detailItems.product.name}</div>
+              <div className="description">{detailItems.product.content}</div>
             </div>
             <div className="categories">
-              {detailItems.sub_description.map(description => {
+              {detailItems.product.features[0].feature.map(description => {
                 return (
-                  <div className="category" key={description.id}>
-                    <p>{description.name}</p>
-                    <p className="element">{description.contents}</p>
+                  <div className="category">
+                    <p>{description.feature}</p>
+                    <p className="element">{description.content}</p>
                   </div>
                 );
               })}
             </div>
             <div className="sizeBox">
               <p>사이즈</p>
-              {detailItems.size.map(({ id, name, image_url, price }) => {
-                return (
-                  <label key={id}>
-                    <input
-                      type="radio"
-                      checked={selectedItem.id === id}
-                      onClick={() => setSelectedItem({ id, image_url, price })}
-                    />
-                    {name}
-                  </label>
-                );
-              })}
+              {detailItems.product.product_option.map(
+                ({ id, size_mL, image_url, price }) => {
+                  return (
+                    <label key={id}>
+                      <input
+                        type="radio"
+                        checked={selectedItem.id === id}
+                        onClick={() =>
+                          setSelectedItem({ id, image_url, price })
+                        }
+                      />
+                      {size_mL}
+                    </label>
+                  );
+                }
+              )}
             </div>
             <button>카트에 추가하기 - {selectedItem.price} </button>
             <div className="recommendNewItem">
@@ -94,18 +98,20 @@ const DetailItem = () => {
       </div>
       <div className="howToUseContainer">
         <div className="itemImage">
-          <p>{detailItems.image}</p>
+          <p>{detailItems.product.additional_image_url}</p>
         </div>
         <div className="howToUseBox">
           <div className="howToUseWrapper">
-            <div className="howToUseTitle">사용법</div>
+            <div className="howToUseTitle">
+              {detailItems.product.additional_name}
+            </div>
             <div className="howToUseText">{detailItems.additional_content}</div>
             <div className="categories">
-              {detailItems.products_features.map(feature => {
+              {detailItems.product.features[0].manual.map(feature => {
                 return (
-                  <div key={feature.id} className="category">
-                    <p>{feature.name}</p>
-                    <p className="element">{feature.contents}</p>
+                  <div className="category">
+                    <p>{feature.feature}</p>
+                    <p className="element">{feature.content}</p>
                   </div>
                 );
               })}
@@ -113,7 +119,7 @@ const DetailItem = () => {
           </div>
         </div>
       </div>
-      <Slider />
+      <Slider detailItems={detailItems} />
     </div>
   );
 };
