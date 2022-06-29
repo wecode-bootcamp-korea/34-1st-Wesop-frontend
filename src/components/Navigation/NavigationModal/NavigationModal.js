@@ -8,6 +8,7 @@ const NavigationModal = ({
   selectedMenu,
   activeAnimation,
   modalChange,
+  setHandleClassName,
 }) => {
   //배열의 인덱스는 0번부터 고유 번호에서 -1' , mockNavMenu[selectedMenu - 1]
   return (
@@ -23,7 +24,7 @@ const NavigationModal = ({
           <span className="wesopLogoInWideModal">Wēsop</span>
         </Link>
       </div>
-      <div className={`navModalListWarp ${activeAnimation && 'animation'}`}>
+      <div className={`navModalListWarp ${activeAnimation}`}>
         {mockNavMenu[selectedMenu - 1].sub_category.map(
           ({ id, name, category }) => {
             return (
@@ -33,13 +34,14 @@ const NavigationModal = ({
                   name={name}
                   category={category}
                   modalChange={modalChange}
+                  setHandleClassName={setHandleClassName}
                 />
               </div>
             );
           }
         )}
       </div>
-      <div className={`navModalImage ${activeAnimation && 'animation'}`}>
+      <div className={`navModalImage ${activeAnimation}`}>
         <img
           className="inModalEachMenuImage"
           alt="Wesop navigation category"

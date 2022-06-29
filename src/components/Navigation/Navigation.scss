@@ -29,6 +29,12 @@
     color: #333;
   }
 
+  &.whiteWithoutBorder {
+    background-color: #fffef2;
+    border-bottom: 1px solid transparent;
+    color: #333;
+  }
+
   .navPrimaryMenu {
     display: flex;
     position: relative;
@@ -39,9 +45,10 @@
       align-items: center;
       margin-right: 14px;
       height: 80px;
+      border-bottom: 2px solid transparent;
 
       &.highlight {
-        border-bottom: 2px solid #333;
+        border-color: #333;
       }
 
       .wesopLogo {

@@ -11,16 +11,14 @@ const Navigation = props => {
 
   const [navClosingBtn, setNavClosingBtn] = useState(false);
 
-  const [loginIsOpen, setLoginIsOpen] = useState(false);
+  // const [loginIsOpen, setLoginIsOpen] = useState(false);
 
   //사용자가 클릭한 메뉴의 고유 번호 : selectedMenu
   const [selectedMenu, setSelectedMenu] = useState(0);
 
   const [activeAnimation, setActiveAnimation] = useState('');
 
-  const activeAnimationModal = () => {
-    setActiveAnimation('animation');
-  };
+  const [handleClassName, setHandleClassName] = useState('highlight');
 
   const modalChange = modal => {
     setNavClosingBtn(modal);
@@ -38,7 +36,8 @@ const Navigation = props => {
   const handlingNavigation = id => {
     setSelectedMenu(id);
     modalChange(true);
-    activeAnimationModal(true);
+    setActiveAnimation('animation');
+    setHandleClassName('highlight');
   };
 
   useEffect(() => {
@@ -74,7 +73,7 @@ const Navigation = props => {
             return (
               <li
                 className={`navPrimaryMenuItem ${
-                  selectedMenu === main_category_id && 'highlight'
+                  selectedMenu === main_category_id && handleClassName
                 }`}
                 key={main_category_id}
               >
@@ -119,9 +118,9 @@ const Navigation = props => {
           <li className="navSecondMenuItem">
             <button
               className="navSecondMenuButton"
-              onClick={() => {
-                setLoginIsOpen(true);
-              }}
+              // onClick={() => {
+              //   setLoginIsOpen(true);
+              // }}
             >
               로그인
             </button>
@@ -140,6 +139,7 @@ const Navigation = props => {
           selectedMenu={selectedMenu}
           activeAnimation={activeAnimation}
           modalChange={modalChange}
+          setHandleClassName={setHandleClassName}
         />
       )}
       {/* {loginIsOpen && (
