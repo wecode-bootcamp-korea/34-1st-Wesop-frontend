@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import ShoppingCart from '../../components/ShoppingCart/ShoppingCart';
 import ShoppingBasket from '../ShoppingBasket/ShoppingBasket';
 
 const Layout = ({ children }) => {
