@@ -1,0 +1,36 @@
+@mixin wideModalListsInterval {
+  line-height: 21px;
+  margin-bottom: 12px;
+}
+
+.categories {
+  .categoriesWrap {
+    margin-bottom: 45px;
+    .categoryTitle {
+      @include wideModalListsInterval;
+    }
+
+    .categoryInList {
+      @include wideModalListsInterval;
+
+      .listLink {
+        position: relative;
+
+        .listLabel:before {
+          position: absolute;
+          bottom: 0;
+          margin-bottom: -3px;
+          width: 0;
+          height: 1px;
+          background-color: #333;
+          transition: width 0.3s;
+          content: '';
+        }
+
+        .listLabel:hover:before {
+          width: 100%;
+        }
+      }
+    }
+  }
+}

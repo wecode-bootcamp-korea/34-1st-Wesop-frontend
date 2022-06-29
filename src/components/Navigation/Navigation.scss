@@ -1,1 +1,106 @@
+@mixin navButtonColor {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
 
+@mixin wesopLogoFont {
+  font-family: 'LeferiPoint-SpecialA';
+}
+@mixin navSecondMenuButton {
+  padding: 4px;
+  color: inherit;
+  font-size: 15px;
+}
+.navBox {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 0px 40px;
+  background-color: #333;
+  color: #fffef2;
+
+  //부모 선택자 참조 "&"(스타일 덮어쓰기 할때 유용)
+  //최상위 태그에 변경 사항 걸고 나머지엔 inherit부여.
+  &.white {
+    background-color: #fffef2;
+    border-bottom: 1px solid #eaeae8;
+    color: #333;
+  }
+
+  &.whiteWithoutBorder {
+    background-color: #fffef2;
+    border-bottom: 1px solid transparent;
+    color: #333;
+  }
+
+  .navPrimaryMenu {
+    display: flex;
+    position: relative;
+    align-items: center;
+
+    .navPrimaryMenuItem {
+      display: flex;
+      align-items: center;
+      margin-right: 14px;
+      height: 80px;
+      border-bottom: 2px solid transparent;
+
+      &.highlight {
+        border-color: #333;
+      }
+
+      .wesopLogo {
+        @include navButtonColor;
+        @include wesopLogoFont;
+        color: inherit;
+        font-size: 30px;
+        text-decoration: none;
+      }
+
+      .navMenuLink {
+        @include navButtonColor;
+        padding: 4px;
+        color: inherit;
+        font-size: 15px;
+        text-decoration: none;
+
+        .navIcon {
+          font-size: 14px;
+        }
+      }
+
+      .navClosingButton {
+        @include navButtonColor;
+        color: inherit;
+        font-size: 15px;
+
+        .navIcon {
+          margin-left: 7px;
+          font-size: 14px;
+        }
+      }
+    }
+  }
+
+  .navSecondMenu {
+    display: flex;
+
+    .navSecondMenuItem {
+      display: flex;
+      align-items: center;
+      height: 80px;
+      margin-right: 14px;
+
+      &:last-child {
+        margin-right: 0;
+      }
+
+      .navSecondMenuButton {
+        @include navButtonColor;
+        @include navSecondMenuButton();
+      }
+    }
+  }
+}
