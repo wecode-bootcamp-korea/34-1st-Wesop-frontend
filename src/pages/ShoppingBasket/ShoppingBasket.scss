@@ -1,10 +1,10 @@
 .shoppingBasket {
   width: 100vw;
   max-height: 100vh;
-  overflow-y: scroll;
-  background-color: #252525;
   padding: 40px;
+  background-color: #252525;
   transition: height 0.3s;
+  overflow-y: scroll;
 
   .wrapperPayment {
     display: flex;
