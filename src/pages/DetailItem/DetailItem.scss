@@ -2,8 +2,10 @@
   width: 100vw;
 
   nav {
-    // width: auto;
+    width: 100vw;
+    z-index: 1;
     display: flex;
+    position: fixed;
     height: 80px;
     justify-content: center;
     align-items: center;
@@ -16,6 +18,7 @@
     position: relative;
     flex-direction: row;
     padding-top: 120px;
+    z-index: 0;
 
     .logo {
       position: absolute;
@@ -54,18 +57,15 @@
         padding-bottom: 20px;
       }
 
-      .categories {
-        p {
-          margin: 7px 0 7px 0;
-          font-size: 15px;
-        }
-      }
       div {
         margin: 20px 0 20px 0;
       }
       .sizeBox {
         p {
           margin-bottom: 10px;
+        }
+        .sizes {
+          font-weight: 300;
         }
       }
 
@@ -122,12 +122,14 @@
 
       .topText {
         font-weight: 400;
+        font-size: 14px;
       }
 
       p {
         margin: 10px 0 10px 0;
         font-weight: lighter;
         color: #333333;
+        font-size: 14px;
       }
     }
   }
@@ -143,6 +145,11 @@
       align-items: center;
       width: 50%;
       background-color: #edebde;
+
+      img {
+        width: 100%;
+        height: 100%;
+      }
     }
 
     .howToUseBox {
@@ -163,8 +170,9 @@
       }
 
       .howToUseText {
-        margin-bottom: 20px;
+        margin-bottom: 25px;
         font-size: 25px;
+        font-weight: 400;
       }
 
       p {
@@ -176,12 +184,18 @@
   .categories {
     border-top: 2px solid #333333;
     .category {
-      border-bottom: 0.5px solid #333333;
+      border-bottom: 0.1px solid #333333;
       height: 50px;
 
       .element {
         font-weight: lighter;
       }
+    }
+  }
+  .category {
+    p {
+      margin: 7px 0 7px 0;
+      font-size: 14px;
     }
   }
 }
