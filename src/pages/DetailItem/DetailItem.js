@@ -61,7 +61,7 @@ const DetailItem = () => {
                   return (
                     <label key={id}>
                       {detailItems.product.product_option.length === 1 ? (
-                        <></>
+                        <> </>
                       ) : (
                         <input
                           type="radio"
@@ -107,7 +107,10 @@ const DetailItem = () => {
       </div>
       <div className="howToUseContainer">
         <div className="itemImage">
-          <img src={detailItems.product.additional_image_url} />
+          <img
+            src={detailItems.product.additional_image_url}
+            alt="제품이미지"
+          />
         </div>
         <div className="howToUseBox">
           <div className="howToUseWrapper">
