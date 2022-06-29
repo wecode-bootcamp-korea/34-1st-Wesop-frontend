@@ -1,0 +1,39 @@
+.basketGrid {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  color: #bcbbb4;
+
+  .wrapperTitle {
+    display: flex;
+    width: 100%;
+    padding-bottom: 25px;
+    border-bottom: 2px solid #3b3b3a;
+
+    .name {
+      flex: 4;
+    }
+
+    .size {
+      flex: 2;
+    }
+
+    .quantities {
+      width: 100px;
+    }
+
+    .delete {
+      width: 50px;
+      text-align: start;
+    }
+
+    .price {
+      flex: 1.5;
+      text-align: end;
+
+      .close {
+        cursor: pointer;
+      }
+    }
+  }
+}

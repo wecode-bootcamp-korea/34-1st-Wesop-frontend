@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Item from './Item/Item';
 import './ItemLists.scss';
 
-const ItemLists = props => {
+const ItemLists = ({ setShoppingBasketShow }) => {
   const [itemList, setItemList] = useState([]);
   const [selectedType] = useState(1);
 
@@ -16,7 +16,7 @@ const ItemLists = props => {
 
   return (
     <div className="itemLists">
-      <nav style={{ backgroundColor: 'yellow', height: '80px' }}> nav </nav>
+      <nav style={{ backgroundColor: 'black', height: '80px' }} />
       <main className="main">
         <section className="wrapperTitle">
           <h1 className="logo">Wesop</h1>
