@@ -9,13 +9,13 @@ const DashBoard = props => {
   const [recommendItems, setRecommendItems] = useState([]);
 
   useEffect(() => {
-    fetch('http://10.58.6.17:8000/product?category=1')
+    fetch('http://10.58.1.131:8001/product?category=1')
       .then(res => res.json())
       .then(data => {
         setItems(data);
       });
 
-    fetch('/data/recommends.json')
+    fetch('http://10.58.1.131:8001/product?category=2')
       .then(res => res.json())
       .then(data => {
         setRecommendItems(data);
