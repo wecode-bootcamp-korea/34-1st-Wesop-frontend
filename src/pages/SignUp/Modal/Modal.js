@@ -10,6 +10,7 @@ const Modal = ({ modal, setModal }) => {
     fisrtName: '',
   });
   const [disabled, setDisabled] = useState(false);
+  const [placeholder, setPlaceholder] = useState('largePlaceholder');
   const { id, pw, lastName, firstName } = userInfo;
 
   const getUserInfo = e => {
@@ -47,10 +48,23 @@ const Modal = ({ modal, setModal }) => {
     }
   };
 
+  const movePlaceholder = () => {
+    setPlaceholder('smallPlaceholder');
+    if (document.querySelector('.input').value === '') {
+      setPlaceholder('largePlaceholder');
+    }
+  };
+
   const disableButton = () => {
     if (lastName === '' || firstName === '') {
       setDisabled(true);
     }
+  };
+
+  const onChangeFunction = () => {
+    getUserInfo();
+    isValid();
+    movePlaceholder();
   };
 
   const signUp = () => {
@@ -90,14 +104,17 @@ const Modal = ({ modal, setModal }) => {
           회원가입을 위해 아래의 세부 정보를 작성해주세요.
         </div>
         <form>
-          <input
-            name="id"
-            type="text"
-            placeholder="이메일 주소"
-            onChange={getUserInfo}
-            onKeyUp={isValid}
-            // onKeyOut={isValid}
-          />
+          <div className="placeholder">
+            <p className={placeholder}>이메일 주소</p>
+            <input
+              name="id"
+              type="text"
+              // placeholder="이메일 주소"
+              onChange={onChangeFunction}
+              className="input"
+              // onKeyOut={isValid}
+            />
+          </div>
           <p className="errorMessage">{emailErrorMessage}</p>
           <input id="pw" type="password" placeholder="패스워드" />
           <input
