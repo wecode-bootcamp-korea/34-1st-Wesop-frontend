@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import './Item.scss';
-const Item = ({ item: { id, name, subTexts, models } }) => {
+const Item = ({
+  item: { product_id, product_name, product_detail, product_feature },
+}) => {
   const [selectedIndex, setSelectedIndex] = useState(0);
 
   const handleItemTypeChange = ({ target: { value } }) => {
@@ -8,32 +10,36 @@ const Item = ({ item: { id, name, subTexts, models } }) => {
   };
   return (
     <div className="item">
-      <img className="image" src={models[selectedIndex]?.image} alt="test" />
-      <p className="name">{name}</p>
-      {models.length === 1 ? (
+      <img
+        className="image"
+        src={product_detail[selectedIndex]?.image_url}
+        alt="test"
+      />
+      <p className="name">{product_name}</p>
+      {product_detail.length === 1 ? (
         <div className="wrapperOneModel">
           <p className="model">
-            {`${models[selectedIndex]?.name} / ₩ ${models[selectedIndex]?.price}`}
+            {`${product_detail[selectedIndex]?.name} / ₩ ${product_detail[selectedIndex]?.price}`}
           </p>
         </div>
       ) : (
         <div className="wrapperManyModel">
           <p className="model">
-            {`${models.length} 사이즈 / ₩ ${models[0].price} 원 부터`}
+            {`${product_detail.length} 사이즈 / ₩ ${product_detail[0].price} 원 부터`}
           </p>
           <div className="wrapperCheckModel">
-            {models.map((model, index) => {
+            {product_detail.map((model, index) => {
               return (
                 <label key={index} className="labelModel">
                   <input
                     className="checkModel"
                     type="radio"
-                    name={`${id}itemType`}
+                    name={`${product_id}itemType`}
                     value={index}
                     defaultChecked={selectedIndex === index}
                     onChange={handleItemTypeChange}
                   />
-                  {model.name}
+                  {`${model.size_mL} mL`}
                 </label>
               );
             })}
@@ -41,17 +47,17 @@ const Item = ({ item: { id, name, subTexts, models } }) => {
         </div>
       )}
       <div className="wrapperSubText">
-        {subTexts.map(({ id, title, discription }) => {
+        {product_feature.map(({ id, feature, content }) => {
           return (
             <div key={id} className="subText">
-              <span className="title">{title}</span>
-              <span className="discription">{discription}</span>
+              <span className="title">{feature}</span>
+              <span className="discription">{content}</span>
             </div>
           );
         })}
       </div>
       <button className="addCart">
-        카트에 추가 - ₩ {models[selectedIndex]?.price}
+        카트에 추가 - ₩ {product_detail[selectedIndex]?.price}
       </button>
     </div>
   );
