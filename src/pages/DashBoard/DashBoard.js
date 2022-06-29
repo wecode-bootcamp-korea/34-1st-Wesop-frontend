@@ -5,11 +5,11 @@ import UseALink from './UseALink/UseALink';
 import './DashBoard.scss';
 
 const DashBoard = props => {
-  const [items, setItems] = useState([]);
+  const [items, setItems] = useState({});
   const [recommendItems, setRecommendItems] = useState([]);
 
   useEffect(() => {
-    fetch('/data/perfumes.json')
+    fetch('http://10.58.6.17:8000/product?category=1')
       .then(res => res.json())
       .then(data => {
         setItems(data);
@@ -43,16 +43,20 @@ const DashBoard = props => {
       </div>
       <section>
         <div className="fragranceWrapper">
-          {items.map(({ id, img, name, feature_name }) => {
-            return (
-              <ItemCard
-                key={id}
-                itemPhoto={img}
-                itemName={name}
-                itemDescription={feature_name}
-              />
-            );
-          })}
+          {Object.keys(items).length > 0 &&
+            items.message.map(({ products }) => {
+              return (
+                <ItemCard
+                  key={products.product_id}
+                  itemPhoto={products.product_detail[0].image_url}
+                  itemName={products.product_name}
+                  itemDescription={
+                    products.product_feature[2] &&
+                    products.product_feature[2].content
+                  }
+                />
+              );
+            })}
         </div>
         <div className="historyWrapper">
           <AdCard
@@ -80,16 +84,20 @@ const DashBoard = props => {
           <h2>탁월한 셀렉션</h2>
         </div>
         <div className="goodChoiceWrapper">
-          {recommendItems.map(({ id, img, name, feature_name }) => {
-            return (
-              <ItemCard
-                key={id}
-                itemPhoto={img}
-                itemName={name}
-                itemDescription={feature_name}
-              />
-            );
-          })}{' '}
+          {Object.keys(recommendItems).length > 0 &&
+            recommendItems.message.map(({ products }) => {
+              return (
+                <ItemCard
+                  key={products.product_id}
+                  itemPhoto={products.product_detail[0].image_url}
+                  itemName={products.product_name}
+                  itemDescription={
+                    products.product_feature[2] &&
+                    products.product_feature[2].content
+                  }
+                />
+              );
+            })}
         </div>
         <div className="closeStore">
           <AdCard
