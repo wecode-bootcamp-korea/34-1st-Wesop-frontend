@@ -74,7 +74,14 @@ const DetailItem = () => {
                               setSelectedItem({
                                 id,
                                 image_url,
-                                price,
+                                price:
+                                  '₩ ' +
+                                  parseInt(price)
+                                    .toString()
+                                    .replace(
+                                      /\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g,
+                                      ','
+                                    ),
                                 is_include_pump,
                               })
                             }

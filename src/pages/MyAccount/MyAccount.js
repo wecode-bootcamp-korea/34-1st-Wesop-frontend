@@ -39,7 +39,6 @@ const MyAccount = props => {
 
   return (
     <div className="myAccountWrapper">
-      <nav className="navi">nav</nav>
       <div className="accountHeading">
         <h1 className="welcomeName">
           {`환영합니다 ${accountInfo.user_information.full_name} 님`}
@@ -55,7 +54,7 @@ const MyAccount = props => {
 
       <AccountCard
         topTitle="패스워드"
-        context1={`${accountInfo.user_information.password}`}
+        context1="●●●●●●●●●●●●●●●●●●●●●"
         theme="border"
         unfold={pwUnfold}
         placeholder={pwUnfold}
