@@ -11,8 +11,8 @@ const Router = props => {
       <Layout>
         <Routes>
           <Route path="/" element={<DashBoard />} />
-          <Route path="/item-lists" element={<ItemLists />} />
-          <Route path="/detail-item" element={<DetailItem />} />
+          <Route path="/item-lists/:id" element={<ItemLists />} />
+          <Route path="/detail-item/:id" element={<DetailItem />} />
         </Routes>
       </Layout>
     </BrowserRouter>

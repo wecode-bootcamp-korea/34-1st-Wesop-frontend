@@ -25,9 +25,6 @@ const DetailItem = () => {
 
   return (
     <div className="detailItem">
-      <nav>
-        <div>nav바 고정</div>
-      </nav>
       <div className="topContainer">
         <div className="logo">Wesop</div>
         <div className="imgBox">

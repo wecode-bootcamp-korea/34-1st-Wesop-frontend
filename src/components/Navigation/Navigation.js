@@ -3,10 +3,11 @@ import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass, faXmark } from '@fortawesome/free-solid-svg-icons';
 import NavigationModal from './NavigationModal/NavigationModal';
+import ShoppingCart from '../../components/ShoppingCart/ShoppingCart';
 // import LoginModal from './Login/LoginModal';
 import './Navigation.scss';
 
-const Navigation = props => {
+const Navigation = ({ setShoppingBasketShow }) => {
   const [mockNavMenu, setMockNavMenu] = useState([]);
 
   const [navClosingBtn, setNavClosingBtn] = useState(false);
@@ -41,20 +42,12 @@ const Navigation = props => {
   };
 
   useEffect(() => {
-    fetch('/data/categories.json')
+    fetch('http://10.58.4.206:8000/products/categories', { method: 'GET' })
       .then(res => res.json())
       .then(data => {
         setMockNavMenu(data.results);
       });
   }, []);
-
-  // useEffect(() => {
-  //   fetch('http://10.58.6.17:8000/product/categories', { method: 'GET' })
-  //     .then(res => res.json())
-  //     .then(data => {
-  //       setMockNavMenu(data.results);
-  //     });
-  // }, []);
 
   return (
     <>
@@ -129,7 +122,7 @@ const Navigation = props => {
             <button className="navSecondMenuButton">회원가입</button>
           </li>
           <li className="navSecondMenuItem">
-            <button className="navSecondMenuButton">카트</button>
+            <ShoppingCart setShoppingBasketShow={setShoppingBasketShow} />
           </li>
         </ul>
       </nav>
