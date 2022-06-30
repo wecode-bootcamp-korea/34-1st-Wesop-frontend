@@ -1,0 +1,207 @@
+.detailItem {
+  width: 100vw;
+
+  nav {
+    width: 100vw;
+    z-index: 1;
+    display: flex;
+    position: fixed;
+    height: 80px;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    background-color: black;
+  }
+
+  .topContainer {
+    display: flex;
+    position: relative;
+    flex-direction: row;
+    padding-top: 120px;
+    z-index: 0;
+
+    .logo {
+      position: absolute;
+      font-size: 30px;
+      top: 200px;
+      left: 40px;
+    }
+
+    .imgBox {
+      display: flex;
+      justify-content: right;
+      width: 65%;
+
+      img {
+        height: 500px;
+        margin-top: 100px;
+      }
+    }
+    .descriptionBox {
+      width: 35%;
+      margin-top: 30px;
+
+      .itemContainer {
+        width: 80%;
+      }
+
+      .titleBox {
+        height: 100px;
+      }
+
+      .title {
+        font-size: 30px;
+      }
+
+      .description {
+        padding-bottom: 20px;
+      }
+
+      div {
+        margin: 20px 0 20px 0;
+      }
+      .sizeBox {
+        p {
+          margin-bottom: 10px;
+          font-size: 14px;
+        }
+
+        .sizes {
+          font-weight: 300;
+        }
+      }
+
+      button {
+        width: 100%;
+        height: 50px;
+        background-color: #333333;
+        color: white;
+        border-radius: 0;
+        border: none;
+        margin-bottom: 10px;
+
+        &:hover {
+          background-color: black;
+          cursor: pointer;
+        }
+      }
+
+      .recommendNewItem {
+        p {
+          margin: 10px 0 10px 0;
+          font-size: 15px;
+        }
+
+        .text {
+          font-weight: 400;
+        }
+
+        .newItemName {
+          font-weight: lighter;
+
+          &:hover {
+            text-decoration: underline;
+            text-decoration-thickness: 1px;
+          }
+        }
+      }
+    }
+  }
+  .serviceContainer {
+    display: flex;
+    flex-direction: row;
+    width: 100vw;
+    height: 100px;
+    margin: 180px 0 180px 0;
+
+    .forBorder {
+      border-right: 0.7px solid #333333;
+    }
+
+    .freeBox {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 50%;
+
+      .topText {
+        font-weight: 400;
+        font-size: 14px;
+      }
+
+      p {
+        margin: 10px 0 10px 0;
+        font-weight: lighter;
+        color: #333333;
+        font-size: 14px;
+      }
+    }
+  }
+
+  .howToUseContainer {
+    display: flex;
+    width: 100vw;
+    height: 750px;
+
+    .itemImage {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 50%;
+      background-color: #edebde;
+
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    .howToUseBox {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #f6f5e8;
+      width: 50%;
+
+      .howToUseWrapper {
+        width: 70%;
+      }
+
+      .howToUseTitle {
+        color: #333333;
+        margin-bottom: 15px;
+        font-weight: lighter;
+      }
+
+      .howToUseText {
+        margin-bottom: 25px;
+        font-size: 25px;
+        font-weight: 400;
+      }
+
+      p {
+        margin: 10px 0 10px 0;
+      }
+    }
+  }
+
+  .categories {
+    border-top: 2px solid #333333;
+
+    .category {
+      border-bottom: 0.1px solid #333333;
+      height: 50px;
+
+      .element {
+        font-weight: lighter;
+      }
+    }
+  }
+  .category {
+    p {
+      margin: 7px 0 7px 0;
+      font-size: 14px;
+    }
+  }
+}

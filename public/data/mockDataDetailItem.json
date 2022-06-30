@@ -1,0 +1,80 @@
+{
+  "product": {
+    "additional_content": "세안 후 토너를 바른 피부에 사용하며, 눈가 주변에 두드려 발라주고 스며들때까지 부드럽게 마사지합니다.",
+    "additional_image_url": "https://images.unsplash.com/photo-1620916297397-a4a5402a3c6c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
+    "additional_name": "사용법",
+    "category": "립 & 아이",
+    "content": "비타민 C 유도체 성분을 함유하여 풍부한 수분과 영양을 공급하는 아이 세럼",
+    "features": [
+      {
+        "feature": [
+          {
+            "content": "모든 피부, 지성, 복합성 피부",
+            "feature": "피부타입",
+            "id": 13
+          },
+          {
+            "content": "시원한, 가벼운",
+            "feature": "사용감",
+            "id": 14
+          },
+          {
+            "content": "파슬리 씨드, 라벤더, 블루 카모마일",
+            "feature": "주요 성분",
+            "id": 15
+          }
+        ],
+        "manual": [
+          {
+            "content": "3-5방울",
+            "feature": "사용량",
+            "id": 68
+          },
+          {
+            "content": "중간정도 무게감의 세럼",
+            "feature": "텍스처",
+            "id": 69
+          },
+          {
+            "content": "허브, 플로럴, 프레시",
+            "feature": "향",
+            "id": 70
+          }
+        ]
+      }
+    ],
+    "id": 5,
+    "main_category": "스킨 케어",
+    "name": "파슬리 씨드 안티 옥시던트 아이 세럼",
+    "product_option": [
+      {
+        "content": "",
+        "id": 7,
+        "image_url": "https://velog.velcdn.com/images/jiminnote/post/5d583c81-86a2-4d42-9a47-8904e44270eb/image.png",
+        "is_include_pump": false,
+        "price": "93000.000",
+        "sizes_mL": "15"
+      }
+    ],
+    "recommend": [
+      {
+        "name": "비터 오렌지 아스트린젠트 토너",
+        "product_content": "대부분의 피부 타입, 지성, 문제성 피부",
+        "product_id": 4,
+        "product_image_url": "https://velog.velcdn.com/images/jiminnote/post/5d583c81-86a2-4d42-9a47-8904e44270eb/image.png"
+      },
+      {
+        "name": "파슬리 씨드 옥시던트 아이 크림",
+        "product_content": "모든 피부, 건성 피부",
+        "product_id": 6,
+        "product_image_url": "https://velog.velcdn.com/images/jiminnote/post/bd9c07fa-ca23-4822-95db-d2a33588239f/image.png"
+      },
+      {
+        "name": "시더 & 시트러스 립 살브",
+        "product_content": "모든 피부 타입. 특히 건조하고 갈라진 입술에 효과적",
+        "product_id": 7,
+        "product_image_url": "https://velog.velcdn.com/images/jiminnote/post/01612d38-a9ef-4bf4-ac34-208dc8c3ba51/image.png"
+      }
+    ]
+  }
+}
