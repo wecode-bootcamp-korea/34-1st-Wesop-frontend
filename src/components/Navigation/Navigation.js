@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass, faXmark } from '@fortawesome/free-solid-svg-icons';
 import NavigationModal from './NavigationModal/NavigationModal';
 import ShoppingCart from '../../components/ShoppingCart/ShoppingCart';
-// import LoginModal from './Login/LoginModal';
+import LoginModal from '../../components/Navigation/Login/LoginModal';
 import './Navigation.scss';
 
 const Navigation = ({ setShoppingBasketShow }) => {
@@ -12,7 +12,9 @@ const Navigation = ({ setShoppingBasketShow }) => {
 
   const [navClosingBtn, setNavClosingBtn] = useState(false);
 
-  // const [loginIsOpen, setLoginIsOpen] = useState(false);
+  const [loginIsOpen, setLoginIsOpen] = useState(false);
+
+  const navigate = useNavigate();
 
   //사용자가 클릭한 메뉴의 고유 번호 : selectedMenu
   const [selectedMenu, setSelectedMenu] = useState(0);
@@ -49,6 +51,9 @@ const Navigation = ({ setShoppingBasketShow }) => {
       });
   }, []);
 
+  const goToMyAccount = () => {
+    navigate('/my-account');
+  };
   return (
     <>
       <nav className={`navBox ${selectedMenu !== 0 && 'white'}`}>
@@ -109,14 +114,32 @@ const Navigation = ({ setShoppingBasketShow }) => {
         </ul>
         <ul className="navSecondMenu">
           <li className="navSecondMenuItem">
-            <button
-              className="navSecondMenuButton"
-              // onClick={() => {
-              //   setLoginIsOpen(true);
-              // }}
-            >
-              로그인
-            </button>
+            {!localStorage.getItem('token') ? (
+              <button
+                className="navSecondMenuButton"
+                onClick={() => {
+                  setLoginIsOpen(true);
+                }}
+              >
+                로그인
+              </button>
+            ) : (
+              <button
+                className="navSecondMenuButton"
+                onClick={() => {
+                  goToMyAccount();
+                }}
+              >
+                {localStorage.getItem('token')}
+              </button>
+            )}
+
+            {loginIsOpen && (
+              <LoginModal
+                loginIsOpen={loginIsOpen}
+                setLoginIsOpen={setLoginIsOpen}
+              />
+            )}
           </li>
           <li className="navSecondMenuItem">
             <button className="navSecondMenuButton">회원가입</button>
@@ -135,9 +158,6 @@ const Navigation = ({ setShoppingBasketShow }) => {
           setHandleClassName={setHandleClassName}
         />
       )}
-      {/* {loginIsOpen && (
-        <LoginModal loginIsOpen={loginIsOpen} setLoginIsOpen={setLoginIsOpen} />
-      )} */}
     </>
   );
 };

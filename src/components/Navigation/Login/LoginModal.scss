@@ -1,0 +1,201 @@
+@mixin userInfoLabels {
+  position: absolute;
+  left: 8;
+  color: #666;
+  font-size: 24px;
+  line-height: 1.75;
+  transform: translate(0, 0) scale(1);
+  transform-origin: top left;
+  transition: 200ms cubic-bezier(0, 0, 0.2, 1) 0ms;
+  pointer-events: none;
+}
+
+@mixin userInfoInput {
+  width: 100%;
+  height: 40px;
+  padding: 8px 0;
+  color: #333;
+  background-color: transparent;
+  border: solid rgba(51, 51, 51, 0.2);
+  border-width: 0 0 1px;
+  font-size: 24px;
+  line-height: 1px;
+}
+
+@mixin userInfoError {
+  margin: 10px 0 0;
+  color: #ea6956;
+  font-size: 14px;
+  line-height: 1.2;
+}
+
+@mixin formTexts {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: 35px;
+  padding: 35px 10px 0;
+}
+
+.loginModal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+
+  .loginWrap {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    padding: 50px 0;
+    background-color: rgba(0, 0, 0, 0.4);
+
+    .loginBody {
+      position: relative;
+      width: 550px;
+      height: auto;
+      padding: 50px;
+      background-color: #fefef2;
+      opacity: 1;
+      z-index: 101;
+      animation: scale-in-center 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+      @keyframes scale-in-center {
+        0% {
+          transform: scale(0);
+          opacity: 1;
+        }
+        100% {
+          transform: scale(1);
+          opacity: 1;
+        }
+      }
+
+      // &.closingAnimation {
+      //   animation: scale-out-center 0.5s cubic-bezier(0.55, 0.085, 0.68, 0.53)
+      //     both;
+      //   @keyframes scale-out-center {
+      //     0% {
+      //       transform: scale(1);
+      //       opacity: 1;
+      //     }
+      //     100% {
+      //       transform: scale(0);
+      //       opacity: 1;
+      //     }
+      //   }
+      // }
+
+      .loginTitle {
+        padding: 40px 0 10px;
+        color: #252525;
+        font-size: 26px;
+        line-height: 1.5;
+      }
+
+      .loginSubTitle {
+        margin-bottom: 30px;
+        color: #666;
+        font-size: 16px;
+        line-height: 1.5;
+      }
+
+      .formRow {
+        display: flex;
+        flex-direction: column;
+
+        .formText {
+          @include formTexts;
+
+          &:focus-within .emailLabel {
+            transform: translate(0px, -26px) scale(0.6);
+          }
+
+          .emailLabel {
+            @include userInfoLabels;
+
+            &.filled {
+              transform: translate(0px, -26px) scale(0.6);
+            }
+          }
+
+          .inputEmail {
+            @include userInfoInput;
+
+            &:focus {
+              outline: none;
+            }
+          }
+
+          .emailConfirmError {
+            @include userInfoError;
+          }
+        }
+      }
+
+      .formRow {
+        display: flex;
+
+        .formText {
+          @include formTexts;
+
+          &:focus-within .passwordLabel {
+            transform: translate(0px, -26px) scale(0.6);
+          }
+
+          .passwordLabel {
+            @include userInfoLabels;
+
+            &.filled {
+              transform: translate(0px, -26px) scale(0.6);
+            }
+          }
+
+          .inputPassword {
+            @include userInfoInput;
+
+            &:focus {
+              outline: none;
+            }
+          }
+
+          .passwordConfirmError {
+            @include userInfoError;
+          }
+        }
+      }
+
+      .loginBigButton {
+        width: 100%;
+        margin: 25px 0 0;
+        padding: 21px 23px;
+        color: #fefef2;
+        background-color: #333;
+        border: none;
+        transition: all 0.5s ease;
+        cursor: pointer;
+
+        &:hover {
+          background-color: #000;
+        }
+      }
+      .loginCloseButton {
+        position: absolute;
+        right: 42px;
+        top: 42px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 30px;
+        height: 30px;
+        color: #252525;
+        background-color: transparent;
+        border: none;
+      }
+    }
+  }
+}
