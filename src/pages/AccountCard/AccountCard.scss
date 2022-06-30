@@ -1,0 +1,43 @@
+.accountCard {
+  width: 920px;
+  margin: 0 auto;
+  padding: 30px 0 0 50px;
+  // border-bottom: 1px solid #9d9c97;
+
+  .topTitleWrapper {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 20px;
+
+    .topTitle {
+      margin: 0 50px 20px 0;
+      color: #9d9c97;
+    }
+  }
+
+  .contextWrapper {
+    font-size: 24px;
+    height: 80px;
+  }
+
+  &.border {
+    border-bottom: 1px solid #9d9c97;
+  }
+  .aaa {
+    .goSave {
+      width: 210px;
+      height: 60px;
+      margin-bottom: 20px;
+      background-color: black;
+      color: white;
+      text-align: center;
+      line-height: 50px;
+
+      &:hover {
+        background-color: #333;
+        color: white;
+      }
+    }
+  }
+}
