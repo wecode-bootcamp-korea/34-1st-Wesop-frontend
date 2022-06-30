@@ -6,6 +6,9 @@ const ShoppingBasket = ({ show, setShoppingBasketShow }) => {
   const [shoppingBasketItems, setShoppingBasketItems] = useState([]);
   useEffect(() => {
     document.body.style.overflow = 'hidden';
+    return () => {
+      document.body.style.overflow = 'visible';
+    };
   }, []);
 
   useEffect(() => {
