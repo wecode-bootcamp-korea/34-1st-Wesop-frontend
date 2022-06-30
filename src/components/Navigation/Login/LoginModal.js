@@ -55,7 +55,7 @@ const LoginModal = ({ loginIsOpen, setLoginIsOpen, setIsLoggedIn }) => {
   const [pwError, setPwError] = useState('');
 
   const postUserInfo = () => {
-    fetch('http://10.58.1.131:8000/users/signin', {
+    fetch('http://10.58.1.131:8000/users/sginin', {
       method: 'POST',
       body: JSON.stringify({
         email: loginInfo.email,
@@ -74,9 +74,11 @@ const LoginModal = ({ loginIsOpen, setLoginIsOpen, setIsLoggedIn }) => {
           setPwError(
             '귀하의 이메일과 패스워드가 일치하지 않습니다. 다시 시도하십시오.'
           );
+          setLoginInfo('');
         }
       });
   };
+
   return (
     <div className="loginModal">
       <div className="loginWrap">
@@ -137,10 +139,7 @@ const LoginModal = ({ loginIsOpen, setLoginIsOpen, setIsLoggedIn }) => {
             <button
               className="loginBigButton"
               type="submit"
-              onClick={() => {
-                postUserInfo();
-                saveLoginInfo('');
-              }}
+              onClick={postUserInfo}
             >
               로그인
             </button>
