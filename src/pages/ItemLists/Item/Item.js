@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import './Item.scss';
 const Item = ({
   item: { product_id, product_name, product_detail, product_feature },
@@ -10,16 +11,18 @@ const Item = ({
   };
   return (
     <div className="item">
-      <img
-        className="image"
-        src={product_detail[selectedIndex]?.image_url}
-        alt="test"
-      />
+      <Link to={`/detail-item/${product_id}`}>
+        <img
+          className="image"
+          src={product_detail[selectedIndex]?.image_url}
+          alt="test"
+        />
+      </Link>
       <p className="name">{product_name}</p>
       {product_detail.length === 1 ? (
         <div className="wrapperOneModel">
           <p className="model">
-            {`${product_detail[selectedIndex]?.name} / ₩ ${product_detail[selectedIndex]?.price}`}
+            {`${product_detail[selectedIndex]?.size_mL} mL / ₩ ${product_detail[selectedIndex]?.price}`}
           </p>
         </div>
       ) : (
