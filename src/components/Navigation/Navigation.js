@@ -5,7 +5,9 @@ import { faMagnifyingGlass, faXmark } from '@fortawesome/free-solid-svg-icons';
 import NavigationModal from './NavigationModal/NavigationModal';
 import ShoppingCart from '../../components/ShoppingCart/ShoppingCart';
 import LoginModal from '../../components/Navigation/Login/LoginModal';
+import Modal from '../../pages/SignUp/Modal/Modal';
 import './Navigation.scss';
+import '../../pages/SignUp/SignUp.scss';
 
 const Navigation = ({ setShoppingBasketShow }) => {
   const [mockNavMenu, setMockNavMenu] = useState([]);
@@ -22,6 +24,7 @@ const Navigation = ({ setShoppingBasketShow }) => {
   const [activeAnimation, setActiveAnimation] = useState('');
 
   const [handleClassName, setHandleClassName] = useState('highlight');
+  const [modal, setModal] = useState(false);
 
   const modalChange = modal => {
     setNavClosingBtn(modal);
@@ -142,7 +145,15 @@ const Navigation = ({ setShoppingBasketShow }) => {
             )}
           </li>
           <li className="navSecondMenuItem">
-            <button className="navSecondMenuButton">회원가입</button>
+            <button
+              className="navSecondMenuButton"
+              onClick={() => {
+                setModal(true);
+              }}
+            >
+              회원가입
+            </button>
+            {modal ? <Modal modal={modal} setModal={setModal} /> : null}
           </li>
           <li className="navSecondMenuItem">
             <ShoppingCart setShoppingBasketShow={setShoppingBasketShow} />
