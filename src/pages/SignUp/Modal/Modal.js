@@ -1,99 +1,123 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import Input from './Input';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faXmark } from '@fortawesome/free-solid-svg-icons';
 
 const Modal = ({ modal, setModal }) => {
-  const [emailErrorMessage, setEmailErrorMessage] = useState('');
-  const [passwordErrorMessage, setPasswordErrorMessage] = useState('');
   const [userInfo, setUserInfo] = useState({
-    id: '',
-    pw: '',
-    firstName: '',
+    email: '',
+    password: '',
+    passwordConfirm: '',
     lastName: '',
+    firstName: '',
   });
-  const { id, pw, firstName, lastName } = userInfo;
 
-  const getUserInfo = e => {
-    const { name, value } = e.target;
+  const [disabled, setDisabled] = useState(false);
+  const { email, password, passwordConfirm, lastName, firstName } = userInfo;
+
+  const changeUserInfo = (name, value) => {
     setUserInfo({ ...userInfo, [name]: value });
   };
 
-  const isValid = () => {
-    id.includes('@' && '.com') || id === ''
-      ? setEmailErrorMessage('')
-      : setEmailErrorMessage(
-          '이메일 주소 형식에 맞지 않습니다. 다시 확인해주세요. (예: name@example.com)'
-        );
+  const validationUserInfo = (name, value) => {
+    switch (name) {
+      case 'lastName':
+        changeUserInfo(name, value);
+        break;
+
+      case 'firstName':
+        changeUserInfo(name, value);
+        break;
+
+      default:
+        break;
+    }
+    return;
   };
 
-  const isSame = () => {
-    let password = document.querySelector('#pw').value;
-    pw === password || pw === ''
-      ? setPasswordErrorMessage('')
-      : setPasswordErrorMessage('이전에 사용했던 패스워드를 입력하세요.');
+  const disableButton = () => {
+    if (
+      lastName === '' ||
+      firstName === '' ||
+      !email.includes('@' && '.com') ||
+      password !== passwordConfirm
+    ) {
+      setDisabled(true);
+    }
   };
 
-  const SignUp = () => {
-    fetch('http://10.58.7.17:8000/users/signup', {
+  const handleChangeUserInfo = ({ target: { name, value } }) => {
+    changeUserInfo(name, value);
+    validationUserInfo(name, value);
+  };
+  const signUp = () => {
+    fetch('http://10.58.4.206:8000/users/signup', {
       method: 'POST',
       body: JSON.stringify({
-        email: id,
-        password: pw,
-        first_name: firstName,
+        email: email,
+        password: password,
         last_name: lastName,
+        first_name: firstName,
       }),
     })
       .then(response => response.json())
-      .then(result => console.log('결과: ', result));
+      .then(result => {
+        if (result.message === 'SUCCESS') {
+          alert('회원가입이 완료되었습니다.');
+          setModal(false);
+        }
+      });
   };
 
   return (
     <div className="modalBody">
       <div className="modalBox">
         <div className="buttons">
-          <button>⇦</button>
           <button
             onClick={() => {
               setModal(false);
             }}
           >
-            x
+            <FontAwesomeIcon icon={faXmark} />
           </button>
         </div>
         <div className="modalTitle">이솝에 오신 것을 환영합니다.</div>
         <div className="modalSubtitle">
           회원가입을 위해 아래의 세부 정보를 작성해주세요.
         </div>
-        <form>
-          <input
-            name="id"
-            type="text"
-            placeholder="이메일 주소"
-            onChange={getUserInfo}
-            onFocusOut={isValid}
-          />
-          <p className="errorMessage">{emailErrorMessage}</p>
-          <input id="pw" type="password" placeholder="패스워드" />
-          <input
-            name="pw"
-            type="password"
-            placeholder="패스워드 확인"
-            onChange={getUserInfo}
-            onKeyUp={isSame}
-          />
-          <div className="errorMessage">{passwordErrorMessage}</div>
+        <form onChange={handleChangeUserInfo}>
+          {EMAIL_PASSWORD_INPUT.map(el => {
+            return (
+              <Input
+                onChange={disableButton}
+                key={el.input_id}
+                input_title={el.input_title}
+                name={el.name}
+                type={el.type}
+                className={el.className}
+                id={el.id}
+                userInfo={userInfo}
+                id_error_message={el.id_error_message}
+                pw_error_message={el.pw_error_message}
+              />
+            );
+          })}
 
-          <div>
-            <input
-              name="firstName"
-              type="text"
-              placeholder="성"
-              className="firstName"
-            />
-            <input
-              name="lastName"
-              type="text"
-              placeholder="이름"
-              className="lastName"
-            />
+          <div className="name">
+            {NAME_INPUT.map(el => {
+              return (
+                <Input
+                  onChange={disableButton}
+                  key={el.input_id}
+                  input_title={el.input_title}
+                  name={el.name}
+                  type={el.type}
+                  className={el.className}
+                  id={el.id}
+                  userInfo={userInfo}
+                />
+              );
+            })}
           </div>
         </form>
         <div className="checkBox">
@@ -106,7 +130,9 @@ const Modal = ({ modal, setModal }) => {
             <span>이용 약관에 동의합니다.</span>
           </div>
         </div>
-        <button className="signUpButton">등록</button>
+        <button className="signUpButton" onClick={signUp} disabled={disabled}>
+          등록
+        </button>
         <div className="haveAccountBox">
           <button className="haveAccount">이솝 계정을 가지고 계십니까?</button>
         </div>
@@ -114,5 +140,47 @@ const Modal = ({ modal, setModal }) => {
     </div>
   );
 };
+
+const EMAIL_PASSWORD_INPUT = [
+  {
+    input_id: 1,
+    input_title: '이메일 주소',
+    type: 'text',
+    name: 'email',
+    className: 'input',
+    id_error_message: '이메일 주소 형식에 맞지 않습니다. 다시 확인해주세요.',
+  },
+  {
+    input_id: 2,
+    input_title: '패스워드',
+    type: 'password',
+    name: 'password',
+    className: 'input',
+  },
+  {
+    input_id: 3,
+    input_title: '패스워드 확인',
+    type: 'password',
+    name: 'passwordConfirm',
+    className: 'input',
+    pw_error_message: '이전에 사용했던 패스워드를 입력하세요.',
+  },
+];
+const NAME_INPUT = [
+  {
+    input_id: 4,
+    input_title: '성',
+    type: 'text',
+    name: 'lastName',
+    className: 'lastName',
+  },
+  {
+    input_id: 5,
+    input_title: '이름',
+    type: 'text',
+    name: 'firstName',
+    className: 'firstName',
+  },
+];
 
 export default Modal;
