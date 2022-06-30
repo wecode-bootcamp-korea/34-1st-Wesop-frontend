@@ -1,0 +1,79 @@
+@mixin wesopLogoFont {
+  font-family: 'LeferiPoint-SpecialA';
+}
+
+@mixin wideModalListsInterval {
+  height: 21px;
+  margin-bottom: 12px;
+}
+
+@mixin modalListsDefault {
+  width: 245px;
+  padding-right: 3vw;
+  font-size: 16px;
+}
+
+.navigationModal {
+  display: flex;
+  width: 100%;
+
+  .wesopLogoWrap {
+    flex: 1.6666;
+    margin-top: 90px;
+
+    .wesopLogoInWideModal {
+      @include wesopLogoFont;
+      width: 120px;
+      margin-left: 40px;
+      font-size: 40px;
+    }
+  }
+  .navModalListWarp {
+    display: flex;
+    flex: 4.9998;
+    margin-top: 90px;
+    margin-bottom: 40px;
+
+    &.animation {
+      animation: fadein 1s;
+      -webkit-animation: fadein 1s;
+
+      @keyframes fadein {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+    }
+
+    .modalList {
+      @include modalListsDefault();
+    }
+  }
+
+  .navModalImage {
+    flex: 3.3332;
+    height: calc(100vh - 83px);
+
+    &.animation {
+      animation: fadein 1s;
+      -webkit-animation: fadein 1s;
+
+      @keyframes fadein {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+    }
+
+    .inModalEachMenuImage {
+      width: 100%;
+      height: 100%;
+    }
+  }
+}

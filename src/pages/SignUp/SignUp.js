@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+>>>>>>> master
 import React, { useState, navigate } from 'react';
 import './SignUp.scss';
 import Modal from './Modal/Modal';
