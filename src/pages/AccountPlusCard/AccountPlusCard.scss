@@ -1,0 +1,27 @@
+.accountPlusCard {
+  width: 920px;
+  height: 50px;
+
+  margin-bottom: 35px;
+
+  .textInputWrapper {
+    width: 657px;
+    height: 62px;
+
+    .inputTitle {
+      color: grey;
+    }
+    .inputContext {
+      width: 100%;
+      font-size: 24px;
+      border: 0;
+      border-bottom: 1px solid grey;
+      background-color: inherit;
+
+      &:focus {
+        outline: none;
+        border-bottom: 1.5px solid black;
+      }
+    }
+  }
+}
