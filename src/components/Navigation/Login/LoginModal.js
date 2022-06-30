@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import './LoginModal.scss';
 
-const LoginModal = ({ loginIsOpen, setLoginIsOpen, setIsLoggedIn }) => {
+const LoginModal = ({ loginIsOpen, setLoginIsOpen }) => {
   //모달창 바깥을 누르면 닫히게 하는 기능
   const modalRef = useRef();
 
@@ -78,10 +78,9 @@ const LoginModal = ({ loginIsOpen, setLoginIsOpen, setIsLoggedIn }) => {
       .then(response => response.json())
       .then(result => {
         if (result.access_token) {
-          localStorage.setItem('token', result.access_token);
-          goToDashBoard();
+          localStorage.setItem('token', result.full_name);
           setLoginIsOpen(!loginIsOpen);
-          setIsLoggedIn(result.full_name);
+          goToDashBoard();
         } else {
           setPwError(
             '귀하의 이메일과 패스워드가 일치하지 않습니다. 다시 시도하십시오.'
