@@ -43,6 +43,7 @@ const LoginModal = ({ loginIsOpen, setLoginIsOpen, setIsLoggedIn }) => {
   const isValidUserEmail = e => {
     const regEmail =
       /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/;
+
     if (regEmail.test(e) === true || e === '') {
       setEmailError('');
     } else {
@@ -54,8 +55,20 @@ const LoginModal = ({ loginIsOpen, setLoginIsOpen, setIsLoggedIn }) => {
 
   const [pwError, setPwError] = useState('');
 
+  const isValidUserPw = e => {
+    const regPw = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{6,}$/;
+
+    if (regPw.test(e) === true || e === '') {
+      setPwError('');
+    } else {
+      setPwError(
+        '비밀번호는 6자 이상이어야 하며, 대문자/소문자/숫자를 모두 포함해야 합니다.'
+      );
+    }
+  };
+
   const postUserInfo = () => {
-    fetch('http://10.58.1.131:8000/users/sginin', {
+    fetch('http://10.58.4.206:8000/users/signin', {
       method: 'POST',
       body: JSON.stringify({
         email: loginInfo.email,
@@ -64,7 +77,6 @@ const LoginModal = ({ loginIsOpen, setLoginIsOpen, setIsLoggedIn }) => {
     })
       .then(response => response.json())
       .then(result => {
-        // console.log('토큰 나와랏', result);
         if (result.access_token) {
           localStorage.setItem('token', result.access_token);
           goToDashBoard();
@@ -74,7 +86,6 @@ const LoginModal = ({ loginIsOpen, setLoginIsOpen, setIsLoggedIn }) => {
           setPwError(
             '귀하의 이메일과 패스워드가 일치하지 않습니다. 다시 시도하십시오.'
           );
-          setLoginInfo('');
         }
       });
   };
@@ -130,7 +141,10 @@ const LoginModal = ({ loginIsOpen, setLoginIsOpen, setIsLoggedIn }) => {
                   name="password"
                   className="inputPassword"
                   type="password"
-                  onChange={saveLoginInfo}
+                  onChange={e => {
+                    saveLoginInfo(e);
+                    isValidUserPw(e.target.value);
+                  }}
                   autoComplete="off"
                 />
                 <div className="passwordConfirmError">{pwError}</div>
