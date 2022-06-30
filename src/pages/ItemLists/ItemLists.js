@@ -14,7 +14,9 @@ const ItemLists = ({ setShoppingBasketShow }) => {
     if (categories.length === 0 || !categoryId) return [];
     for (let i = 0; i < categories.length; i++) {
       for (let k = 0; k < categories[i].sub_category[0].category.length; k++) {
-        if (categories[i].sub_category[0].category[k].id == categoryId) {
+        if (
+          categories[i].sub_category[0].category[k].id === parseInt(categoryId)
+        ) {
           return [
             { id: 0, name: '전체보기' },
             ...categories[i].sub_category[0].category,
