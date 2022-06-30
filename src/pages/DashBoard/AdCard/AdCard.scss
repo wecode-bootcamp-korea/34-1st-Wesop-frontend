@@ -1,0 +1,36 @@
+.adCard {
+  width: 570px;
+  height: 592px;
+  padding-left: 80px;
+
+  .adCardArticle {
+    width: 490px;
+    height: 278px;
+
+    .adCardHeader {
+      .adCardTopTitle {
+        margin-bottom: 20px;
+        font-size: 14px;
+        line-height: 22px;
+      }
+
+      .adCardMainTitle {
+        margin-bottom: 30px;
+        font-size: 30px;
+        line-height: 40px;
+      }
+    }
+
+    .adStory {
+      margin-bottom: 30px;
+      font-size: 16px;
+      line-height: 26px;
+    }
+
+    a {
+      width: 300px;
+      height: 60px;
+      padding: 19px 55px 19px 23px;
+    }
+  }
+}

@@ -1,0 +1,127 @@
+@import '../../styles/common.scss';
+@mixin dashBoardFonts($font-size, $margin) {
+  margin: $margin;
+  color: #fffef2;
+  font-size: $font-size;
+}
+
+@mixin moduleSize($height) {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: $height;
+  padding-top: 150px;
+}
+
+.dashBoard {
+  .dashBoardWrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding-bottom: 36%;
+
+    .dashBoardImg {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      bottom: 0;
+      background-position: 50% 50%;
+      background-image: url(../../../public/images/christin-hume-0MoF-Fe0w0A-unsplash.jpg);
+      background-size: cover;
+      background-repeat: no-repeat;
+
+      .dashBoardInfo {
+        width: 1025px;
+        height: 100%;
+        padding: 200px 0px 180px;
+        padding-left: 250px;
+
+        header h2 {
+          @include dashBoardFonts(14px, 0px 0px 15px);
+        }
+
+        h1 {
+          @include dashBoardFonts(30px, 0px 0px 15px);
+        }
+
+        p {
+          @include dashBoardFonts(16px, 0px 0px 30px);
+          line-height: 26px;
+        }
+      }
+    }
+  }
+
+  section {
+    overflow: hidden;
+
+    .fragranceWrapper {
+      @include moduleSize(701.8px);
+    }
+
+    .historyWrapper {
+      @include moduleSize(805.08px);
+
+      .dashBoardVideo {
+        max-width: 999.25px;
+        max-height: 592.08px;
+        display: block;
+      }
+    }
+
+    .travelWrapper {
+      @include moduleSize(780.08px);
+      flex-direction: row-reverse;
+
+      img {
+        width: 999.25px;
+        height: 562.08px;
+      }
+    }
+
+    .goodChoice {
+      width: 100%;
+      height: 249.9px;
+      padding-top: 150px;
+
+      h2 {
+        padding-left: 80px;
+        font-size: 30px;
+      }
+    }
+
+    .goodChoiceWrapper {
+      @include moduleSize(602.3px);
+      padding-top: 50px;
+    }
+
+    .closeStore {
+      @include moduleSize(689.34px);
+      padding-top: 150px;
+
+      img {
+        width: 999px;
+        height: 561.94px;
+      }
+    }
+
+    .bottomQuote {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      height: 387.9px;
+      padding: 150px 40px;
+
+      .quote {
+        margin-bottom: 20px;
+        font-size: 30px;
+      }
+
+      .cite {
+        font-size: 14px;
+      }
+    }
+  }
+}

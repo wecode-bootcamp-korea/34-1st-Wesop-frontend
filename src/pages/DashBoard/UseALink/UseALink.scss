@@ -1,0 +1,38 @@
+@mixin goToSite($color, $border-color) {
+  border: 1px solid $border-color;
+  color: $color;
+}
+
+.useALink {
+  width: 300px;
+  height: 60px;
+  padding: 0 55px 0 23px;
+  background-color: rgba(0, 0, 0, 0);
+  font-size: 14px;
+  line-height: 60px;
+  transition: all 0.3s;
+
+  a {
+    padding: 0px -0.5px 20px;
+  }
+}
+
+.useALink.white {
+  @include goToSite(black, #333333);
+
+  &:hover {
+    border-color: #000;
+    background-color: #333333;
+    color: #fff;
+  }
+}
+
+.useALink.dark {
+  @include goToSite(white, white);
+
+  &:hover {
+    border-color: white;
+    background-color: white;
+    color: black;
+  }
+}
