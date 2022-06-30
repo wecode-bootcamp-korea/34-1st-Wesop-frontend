@@ -2,24 +2,26 @@
   margin-right: 10px;
 }
 
-.modal {
-  display: flex;
-  width: 100vw;
-  height: 100vh;
-  justify-content: center;
-  align-items: center;
-}
-
 .modalBody {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
   width: 555px;
   height: 90vh;
   overflow-y: scroll;
+  z-index: 1;
 
   .modalBox {
     width: 540px;
     height: 900px;
     padding: 50px;
     background-color: #fffef2;
+
+    .checkBox,
+    .modalTitle {
+      color: #353535;
+    }
   }
 
   .buttons {
