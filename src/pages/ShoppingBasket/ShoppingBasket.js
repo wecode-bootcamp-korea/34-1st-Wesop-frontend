@@ -12,9 +12,6 @@ const ShoppingBasket = ({ show, setShoppingBasketShow }) => {
   }, []);
 
   useEffect(() => {
-    // const localItems = JSON.parse(localStorage.getItem('shoppingBasketItems'));
-    // if (!localItems || localItems.length === 0) return;
-    // setShoppingBasketItems(localItems);
     setShoppingBasketItems([
       { id: 1, name: '샴푸', size: '100 ml', quantity: 2, price: 10000 },
       {
@@ -76,12 +73,6 @@ const ShoppingBasket = ({ show, setShoppingBasketShow }) => {
         </div>
         <button className="payment">결제하기</button>
       </div>
-      {/* <div
-        className="black"
-        onClick={() => {
-          setShoppingBasketShow(false);
-        }}
-      /> */}
     </div>
   );
 };
