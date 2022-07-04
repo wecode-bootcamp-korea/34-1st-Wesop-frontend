@@ -6,7 +6,7 @@ const MyAccount = props => {
   const [accountInfo, setAccountInfo] = useState({});
 
   useEffect(() => {
-    fetch('http://10.58.4.206:8000/users/mypage', {
+    fetch('http://10.58.2.100:8000/users/mypage', {
       headers: {
         Authorization:
           'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyfQ.l1SmzbSBW9SHz1kOi7uVgE4sRkSwAQmVj-7_kcYgpBA',
@@ -22,20 +22,31 @@ const MyAccount = props => {
   if (Object.keys(accountInfo).length === 0) return <>loading...</>;
 
   const accountUnfold = [
-    { title: '성', context: accountInfo.user_information.last_name },
-    { title: '이름', context: accountInfo.user_information.first_name },
+    {
+      title: '성',
+      name: 'last_name',
+      value: accountInfo.user_information.last_name,
+    },
+    {
+      title: '이름',
+      name: 'first_name',
+      value: accountInfo.user_information.first_name,
+    },
     {
       title: 'email',
-      context: accountInfo.user_information.email,
+      name: 'email',
+      value: accountInfo.user_information.email,
       disabled: true,
     },
   ];
 
   const pwUnfold = [
-    { placeholder: '현재 패스워드' },
-    { placeholder: '새 패스워드' },
-    { placeholder: '새 패스워드 확인하기' },
+    { placeholder: '현재 패스워드', type: 'password' },
+    { placeholder: '새 패스워드', type: 'password' },
+    { placeholder: '새 패스워드 확인하기', type: 'password' },
   ];
+
+  const handleSaveInfo = [{}];
 
   return (
     <div className="myAccountWrapper">
@@ -50,6 +61,7 @@ const MyAccount = props => {
         context2={`${accountInfo.user_information.email}`}
         theme="border"
         unfold={accountUnfold}
+        handleSave={handleSaveInfo}
       />
 
       <AccountCard
@@ -58,6 +70,7 @@ const MyAccount = props => {
         theme="border"
         unfold={pwUnfold}
         placeholder={pwUnfold}
+        handleSave={handleSaveInfo}
       />
       <AccountCard topTitle="피부를 설명해 주세요" />
     </div>

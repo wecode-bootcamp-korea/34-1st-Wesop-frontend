@@ -6,6 +6,9 @@ const AccountPlusCard = ({
   inputContext,
   inputPlaceholder,
   inputDisabled,
+  inputType,
+  inputName,
+  onChangeInput,
 }) => {
   return (
     <div className="accountPlusCard">
@@ -16,6 +19,9 @@ const AccountPlusCard = ({
           defaultValue={inputContext}
           placeholder={inputPlaceholder}
           disabled={inputDisabled}
+          type={inputType}
+          name={inputName}
+          onChange={e => onChangeInput(e.target.name, e.target.value)}
         />
       </div>
     </div>
